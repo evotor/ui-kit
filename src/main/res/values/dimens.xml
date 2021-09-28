@@ -20,6 +20,8 @@
     <dimen name="heading5_text_size">16sp</dimen>
     <dimen name="body_normal_text_size">16sp</dimen>
     <dimen name="body_small_text_size">14sp</dimen>
+    <dimen name="caption_normal_text_size">13sp</dimen>
+    <dimen name="caption_small_text_size">12sp</dimen>
     <dimen name="button14_text_size">14sp</dimen>
     <dimen name="button10_text_size">10sp</dimen>
     <dimen name="heading1_line_spacing_extra">0sp</dimen>
@@ -29,6 +31,8 @@
     <dimen name="heading5_line_spacing_extra">5sp</dimen>
     <dimen name="body_normal_line_spacing_extra">5sp</dimen>
     <dimen name="body_small_line_spacing_extra">5sp</dimen>
+    <dimen name="caption_normal_line_spacing_extra">1sp</dimen>
+    <dimen name="caption_small_line_spacing_extra">2sp</dimen>
     <dimen name="button14_line_spacing_extra">4sp</dimen>
     <dimen name="button10_line_spacing_extra">0sp</dimen>
     <dimen name="heading1_translation_Y">-0.08sp</dimen>
@@ -38,6 +42,8 @@
     <dimen name="heading5_translation_Y">-2.62sp</dimen>
     <dimen name="body_normal_translation_Y">-2.62sp</dimen>
     <dimen name="body_small_translation_Y">-1.8sp</dimen>
+    <dimen name="caption_normal_translation_Y">-0.38sp</dimen>
+    <dimen name="caption_small_translation_Y">-0.97sp</dimen>
     <dimen name="button14_translation_Y">-1.8sp</dimen>
     <dimen name="button10_translation_Y">-0.14sp</dimen>
 </resources>
