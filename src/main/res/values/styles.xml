@@ -41,6 +41,22 @@
         <item name="android:translationY">@dimen/heading5_translation_Y</item>
     </style>
 
+    <style name="EvotorTheme.Text.Body" parent="EvotorTheme.Text">
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="EvotorTheme.Text.Body.Normal" parent="EvotorTheme.Text.Body">
+        <item name="android:textSize">@dimen/body_normal_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/body_normal_line_spacing_extra</item>
+        <item name="android:translationY">@dimen/body_normal_translation_Y</item>
+    </style>
+
+    <style name="EvotorTheme.Text.Body.Small" parent="EvotorTheme.Text.Body">
+        <item name="android:textSize">@dimen/body_small_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/body_small_line_spacing_extra</item>
+        <item name="android:translationY">@dimen/body_small_translation_Y</item>
+    </style>
+
     <style name="EvotorTheme.Text.Button" parent="EvotorTheme.Text">
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">@dimen/button14_text_size</item>
