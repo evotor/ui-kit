@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_big_min_height">56dp</dimen>
+    <dimen name="button_big_min_width">72dp</dimen>
+    <dimen name="button_regular_min_height">48dp</dimen>
+
+    <dimen name="button_horizontal_padding">16dp</dimen>
+    <dimen name="button_big_drawable_padding">16dp</dimen>
+    <dimen name="button_small_drawable_padding">8dp</dimen>
+    <dimen name="button_small_horizontal_padding">12dp</dimen>
+    <dimen name="button_small_primary_vertical_padding">10dp</dimen>
+    <dimen name="button_small_additional_vertical_padding">6dp</dimen>
+
+    <dimen name="button_regular_corner_radius">8dp</dimen>
+
+    <dimen name="heading1_text_size">34sp</dimen>
+    <dimen name="heading2_text_size">30sp</dimen>
+    <dimen name="heading3_text_size">24sp</dimen>
+    <dimen name="heading4_text_size">20sp</dimen>
+    <dimen name="heading5_text_size">16sp</dimen>
+    <dimen name="button14_text_size">14sp</dimen>
+    <dimen name="button10_text_size">10sp</dimen>
+    <dimen name="heading1_line_spacing_extra">0sp</dimen>
+    <dimen name="heading2_line_spacing_extra">1sp</dimen>
+    <dimen name="heading3_line_spacing_extra">2sp</dimen>
+    <dimen name="heading4_line_spacing_extra">1sp</dimen>
+    <dimen name="heading5_line_spacing_extra">5sp</dimen>
+    <dimen name="button14_line_spacing_extra">4sp</dimen>
+    <dimen name="button10_line_spacing_extra">0sp</dimen>
+    <dimen name="heading1_translation_Y">-0.08sp</dimen>
+    <dimen name="heading2_translation_Y">-0.42sp</dimen>
+    <dimen name="heading3_translation_Y">-0.94sp</dimen>
+    <dimen name="heading4_translation_Y">-0.28sp</dimen>
+    <dimen name="heading5_translation_Y">-2.62sp</dimen>
+    <dimen name="button14_translation_Y">-1.8sp</dimen>
+    <dimen name="button10_translation_Y">-0.14sp</dimen>
+</resources>

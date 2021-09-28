@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Текстовые стили -->
+    <style name="EvotorTheme.Text" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:gravity">top</item>
+    </style>
+
+    <style name="EvotorTheme.Text.Heading" parent="EvotorTheme.Text">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="EvotorTheme.Text.Heading1" parent="EvotorTheme.Text.Heading">
+        <item name="android:textSize">@dimen/heading1_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/heading1_line_spacing_extra</item>
+        <item name="android:translationY">@dimen/heading1_translation_Y</item>
+    </style>
+
+    <style name="EvotorTheme.Text.Heading2" parent="EvotorTheme.Text.Heading">
+        <item name="android:textSize">@dimen/heading2_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/heading2_line_spacing_extra</item>
+        <item name="android:translationY">@dimen/heading2_translation_Y</item>
+    </style>
+
+    <style name="EvotorTheme.Text.Heading3" parent="EvotorTheme.Text.Heading">
+        <item name="android:textSize">@dimen/heading3_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/heading3_line_spacing_extra</item>
+        <item name="android:translationY">@dimen/heading3_translation_Y</item>
+    </style>
+
+    <style name="EvotorTheme.Text.Heading4" parent="EvotorTheme.Text.Heading">
+        <item name="android:textSize">@dimen/heading4_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/heading4_line_spacing_extra</item>
+        <item name="android:translationY">@dimen/heading4_translation_Y</item>
+    </style>
+
+    <style name="EvotorTheme.Text.Heading5" parent="EvotorTheme.Text.Heading">
+        <item name="android:textSize">@dimen/heading5_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/heading5_line_spacing_extra</item>
+        <item name="android:translationY">@dimen/heading5_translation_Y</item>
+    </style>
+
+    <style name="EvotorTheme.Text.Button" parent="EvotorTheme.Text">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/button14_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/button14_line_spacing_extra</item>
+        <item name="android:translationY">@dimen/button14_translation_Y</item>
+    </style>
+
+    <style name="EvotorTheme.Text.Button.Small" parent="EvotorTheme.Text.Button">
+        <item name="android:textSize">@dimen/button10_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/button10_line_spacing_extra</item>
+        <item name="android:translationY">@dimen/button10_translation_Y</item>
+    </style>
+
+    <!-- Стили кнопок -->
+    <style name="EvotorTheme.Button" parent="Base.Widget.AppCompat.Button">
+        <item name="textAllCaps">true</item>
+        <item name="android:paddingStart">@dimen/button_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/button_horizontal_padding</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="EvotorTheme.Button.Big" parent="EvotorTheme.Button">
+        <item name="android:minHeight">@dimen/button_big_min_height</item>
+        <item name="android:minWidth">@dimen/button_big_min_width</item>
+        <item name="android:textAppearance">@style/EvotorTheme.Text.Button</item>
+        <item name="android:textColor">@color/button_text_color_black</item>
+        <item name="android:drawablePadding">@dimen/button_big_drawable_padding</item>
+    </style>
+
+    <style name="EvotorTheme.Button.Big.Primary" parent="EvotorTheme.Button.Big">
+        <item name="android:background">@drawable/btn_regular_primary_background</item>
+    </style>
+
+    <style name="EvotorTheme.Button.Big.Additional" parent="EvotorTheme.Button.Big">
+        <item name="android:background">@drawable/btn_regular_additional_background</item>
+    </style>
+
+    <style name="EvotorTheme.Button.Regular" parent="EvotorTheme.Button">
+        <item name="android:minHeight">@dimen/button_regular_min_height</item>
+    </style>
+
+    <style name="EvotorTheme.Button.Regular.Primary" parent="EvotorTheme.Button.Regular">
+        <item name="android:background">@drawable/btn_regular_primary_background</item>
+    </style>
+
+    <style name="EvotorTheme.Button.Regular.Additional" parent="EvotorTheme.Button.Regular">
+        <item name="android:background">@drawable/btn_regular_additional_background</item>
+    </style>
+
+    <style name="EvotorTheme.Button.Regular.Warning" parent="EvotorTheme.Button.Regular">
+        <item name="android:background">@drawable/btn_regular_warning_background</item>
+        <item name="android:textColor">@color/button_text_color_white</item>
+    </style>
+
+    <style name="EvotorTheme.Button.Regular.Text" parent="EvotorTheme.Button.Regular">
+        <item name="android:background">@drawable/btn_transparent_background</item>
+        <item name="android:textColor">@color/button_text_color_white</item>
+    </style>
+
+    <style name="EvotorTheme.Button.Small" parent="EvotorTheme.Button">
+        <item name="android:background">@drawable/btn_transparent_background</item>
+        <item name="android:minHeight">@dimen/button_regular_min_height</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:paddingStart">@dimen/button_small_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/button_small_horizontal_padding</item>
+    </style>
+
+    <style name="EvotorTheme.Button.Small.Primary" parent="EvotorTheme.Button.Small">
+        <item name="android:paddingTop">@dimen/button_small_primary_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/button_small_primary_vertical_padding</item>
+    </style>
+
+    <style name="EvotorTheme.Button.Small.Additional" parent="EvotorTheme.Button.Small">
+        <item name="textAllCaps">false</item>
+        <item name="android:drawablePadding">@dimen/button_small_drawable_padding</item>
+        <item name="android:paddingTop">@dimen/button_small_additional_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/button_small_additional_vertical_padding</item>
+    </style>
+</resources>

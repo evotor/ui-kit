@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#1A1818</color>
+    <color name="accent">#21C68B</color>
+    <color name="error">#EE3D3D</color>
+
+    <!-- TODO: поменять button_ripple_color-->
+    <color name="button_ripple_color">#1EFFFFFF</color>
+    <color name="button_additional_background">#FFFFFF</color>
+
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#A1A1A1</color>
+    <color name="text_dark">#1A1818</color>
+
+    <color name="icon_dark">#7B7779</color>
+    <color name="table_zebra">#201E1E</color>
+    <color name="popover">#2E2A2B</color>
+
+    <color name="dialog_background">#4A4547</color>
+    <color name="disabled">#515151</color>
+    <color name="disabled_background">#1EFFFFFF</color>
+    <color name="disabled_text">#5BFFFFFF</color>
+    <color name="dark_overlay">#66FFFFFF</color>
+    <color name="note">#133649</color>
+    <color name="skeleton_gradient">#403A3B</color>
+    <color name="table_line">#686263</color>
+    <color name="dark_pattern">#121111</color>
+    <color name="white54">#89FFFFFF</color>
+    <color name="black54">#891A1818</color>
+</resources>
