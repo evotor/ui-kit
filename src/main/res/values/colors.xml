@@ -4,8 +4,8 @@
     <color name="accent">#21C68B</color>
     <color name="error">#EE3D3D</color>
 
-    <!-- TODO: поменять button_ripple_color-->
-    <color name="button_ripple_color">#1EFFFFFF</color>
+    <color name="button_ripple_color">#51212121</color>
+    <color name="button_transparent_ripple_color">#1FFFFFFF</color>
     <color name="button_additional_background">#FFFFFF</color>
 
     <color name="text_primary">#FFFFFF</color>
