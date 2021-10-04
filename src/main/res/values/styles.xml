@@ -159,7 +159,6 @@
 
     <style name="EvotorTheme.BottomSheetModalStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
-        <item name="behavior_skipCollapsed">true</item>
     </style>
 
 </resources>

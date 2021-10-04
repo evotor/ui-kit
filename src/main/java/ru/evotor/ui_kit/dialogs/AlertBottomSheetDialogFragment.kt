@@ -1,5 +1,7 @@
 package ru.evotor.ui_kit.dialogs
 
+import android.app.Dialog
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -57,12 +59,20 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
             val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT)
             layoutParams.setMargins(
-                    0, resources.getDimension(R.dimen.bottom_sheet_dialog_block_margin).toInt(),
-                    0, resources.getDimension(R.dimen.bottom_sheet_dialog_block_margin).toInt()
+                    resources.getDimension(R.dimen.bottom_sheet_dialog_block_horizontal_margin).toInt(),
+                    resources.getDimension(R.dimen.bottom_sheet_dialog_block_vertical_margin).toInt(),
+                    resources.getDimension(R.dimen.bottom_sheet_dialog_block_horizontal_margin).toInt(),
+                    resources.getDimension(R.dimen.bottom_sheet_dialog_block_vertical_margin).toInt()
             )
             button.layoutParams = layoutParams
             button.setOnClickListener { buttonDescription.listener?.invoke() }
             binding.dialogContentContainer.addView(button)
+        }
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return super.onCreateDialog(savedInstanceState).apply {
+            window?.setBackgroundDrawable(ColorDrawable(context.getColor(R.color.dialog_transparent_background)))
         }
     }
 
