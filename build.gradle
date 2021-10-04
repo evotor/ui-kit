@@ -16,7 +16,7 @@ buildscript {
 }
 
 def version_code = 1
-def version_name = "STDEV-9315"
+def version_name = "STDEV-9348"
 
 android {
 
@@ -47,6 +47,9 @@ android {
     }
     lintOptions {
         abortOnError false
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 

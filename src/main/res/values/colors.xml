@@ -16,7 +16,7 @@
     <color name="table_zebra">#201E1E</color>
     <color name="popover">#2E2A2B</color>
 
-    <color name="dialog_background">#4A4547</color>
+    <color name="snackbar_background">#4A4547</color>
     <color name="disabled">#515151</color>
     <color name="disabled_background">#1EFFFFFF</color>
     <color name="disabled_text">#5BFFFFFF</color>

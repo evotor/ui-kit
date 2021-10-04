@@ -35,4 +35,9 @@
     <dimen name="caption2_line_spacing_extra">2sp</dimen>
     <dimen name="button1_line_spacing_extra">4sp</dimen>
     <dimen name="button2_line_spacing_extra">0sp</dimen>
+
+    <dimen name="bottom_sheet_dialog_corner_radius">8dp</dimen>
+    <dimen name="bottom_sheet_dialog_horizontal_padding">24dp</dimen>
+    <dimen name="bottom_sheet_dialog_block_margin">8dp</dimen>
+    <dimen name="bottom_sheet_dialog_margin_horizontal">0dp</dimen>
 </resources>
