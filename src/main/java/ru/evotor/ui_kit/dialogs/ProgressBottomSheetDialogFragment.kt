@@ -46,24 +46,27 @@ class ProgressBottomSheetDialogFragment : BottomSheetDialogFragment() {
         return this
     }
 
-    fun show(fragmentManager: FragmentManager) {
+    fun show(fragmentManager: FragmentManager): ProgressBottomSheetDialogFragment {
         try {
             fragmentManager.beginTransaction().add(this, TAG).commitNowAllowingStateLoss()
         } catch (e: IllegalStateException) {
             e.printStackTrace()
             fragmentManager.beginTransaction().add(this, TAG).commitAllowingStateLoss()
         }
+        return this
     }
 
     private fun Bundle.getMessage(): String? = getString(MESSAGE_KEY, null)
 
     companion object {
 
+        @JvmStatic
         fun newInstance() = ProgressBottomSheetDialogFragment().apply {
             arguments = Bundle()
-            //isCancelable = false
+            isCancelable = false
         }
 
+        @JvmStatic
         fun hide(fragmentManager: FragmentManager) {
             fragmentManager.findFragmentByTag(TAG)?.let {
                 try {

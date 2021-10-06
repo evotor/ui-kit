@@ -111,13 +111,14 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
         return this
     }
 
-    fun show(fragmentManager: FragmentManager) {
+    fun show(fragmentManager: FragmentManager): AlertBottomSheetDialogFragment {
         try {
             fragmentManager.beginTransaction().add(this, TAG).commitNowAllowingStateLoss()
         } catch (e: IllegalStateException) {
             e.printStackTrace()
             fragmentManager.beginTransaction().add(this, TAG).commitAllowingStateLoss()
         }
+        return this
     }
 
     private fun Bundle.getIcon(): Int? = getInt(ICON_KEY).let {
@@ -159,10 +160,12 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     companion object {
 
+        @JvmStatic
         fun newInstance() = AlertBottomSheetDialogFragment().apply {
             arguments = Bundle()
         }
 
+        @JvmStatic
         fun hide(fragmentManager: FragmentManager) {
             fragmentManager.findFragmentByTag(TAG)?.let {
                 try {
