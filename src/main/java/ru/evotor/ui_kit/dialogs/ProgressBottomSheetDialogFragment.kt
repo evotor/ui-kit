@@ -56,6 +56,8 @@ class ProgressBottomSheetDialogFragment : BottomSheetDialogFragment() {
         return this
     }
 
+    fun isShowing(): Boolean = dialog?.isShowing ?: false
+
     private fun Bundle.getMessage(): String? = getString(MESSAGE_KEY, null)
 
     companion object {
