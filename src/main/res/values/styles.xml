@@ -161,4 +161,18 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <!-- Стили для progress bar'ов-->
+    <style name="EvotorTheme.LinearProgressIndicator" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="android:indeterminateTint">@color/accent</item>
+        <item name="android:backgroundTint">@color/accent_50</item>
+        <item name="android:indeterminate">true</item>
+        <item name="indicatorColor">@color/accent</item>
+    </style>
+
+    <style name="EvotorTheme.CircularProgressIndicator" parent="Widget.MaterialComponents.CircularProgressIndicator">
+        <item name="indicatorColor">@color/accent</item>
+        <item name="android:indeterminate">true</item>
+        <item name="indicatorInset">0dp</item>
+    </style>
+
 </resources>
