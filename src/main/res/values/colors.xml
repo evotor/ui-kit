@@ -2,7 +2,10 @@
 <resources>
     <color name="background">#1A1818</color>
     <color name="accent">#21C68B</color>
+    <color name="accent_50">#7f21C68B</color>
     <color name="error">#EE3D3D</color>
+    <color name="error_50">#7FEE3D3D</color>
+    <color name="dialog_transparent_background">#7F000000</color>
 
     <color name="button_ripple_color">#51212121</color>
     <color name="button_transparent_ripple_color">#1FFFFFFF</color>
@@ -16,7 +19,7 @@
     <color name="table_zebra">#201E1E</color>
     <color name="popover">#2E2A2B</color>
 
-    <color name="dialog_background">#4A4547</color>
+    <color name="snackbar_background">#4A4547</color>
     <color name="disabled">#515151</color>
     <color name="disabled_background">#1EFFFFFF</color>
     <color name="disabled_text">#5BFFFFFF</color>

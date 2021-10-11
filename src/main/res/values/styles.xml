@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="EvotorTheme.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/background</item>
+        <item name="background">@color/background</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:displayOptions">showTitle</item>
+        <item name="displayOptions">showTitle</item>
+    </style>
+
     <!-- Текстовые стили -->
     <style name="EvotorTheme.Text" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/text_primary</item>
@@ -142,4 +151,28 @@
         <item name="android:paddingTop">@dimen/button_text_small_vertical_padding</item>
         <item name="android:paddingBottom">@dimen/button_text_small_vertical_padding</item>
     </style>
+
+    <!-- Стили для bottom sheet dialog fragment'а -->
+    <style name="EvotorTheme.BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/EvotorTheme.BottomSheetModalStyle</item>
+    </style>
+
+    <style name="EvotorTheme.BottomSheetModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!-- Стили для progress bar'ов-->
+    <style name="EvotorTheme.LinearProgressIndicator" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="android:indeterminateTint">@color/accent</item>
+        <item name="android:backgroundTint">@color/accent_50</item>
+        <item name="android:indeterminate">true</item>
+        <item name="indicatorColor">@color/accent</item>
+    </style>
+
+    <style name="EvotorTheme.CircularProgressIndicator" parent="Widget.MaterialComponents.CircularProgressIndicator">
+        <item name="indicatorColor">@color/accent</item>
+        <item name="android:indeterminate">true</item>
+        <item name="indicatorInset">0dp</item>
+    </style>
+
 </resources>
