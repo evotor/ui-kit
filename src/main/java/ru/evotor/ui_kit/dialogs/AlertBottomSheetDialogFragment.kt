@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
@@ -83,8 +84,18 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
         return this
     }
 
+    fun setTitle(@StringRes titleRes: Int): AlertBottomSheetDialogFragment {
+        arguments?.putInt(TITLE_RES_KEY, titleRes)
+        return this
+    }
+
     fun setMessage(message: String): AlertBottomSheetDialogFragment {
         arguments?.putString(MESSAGE_KEY, message)
+        return this
+    }
+
+    fun setMessage(@StringRes messageRes: Int): AlertBottomSheetDialogFragment {
+        arguments?.putInt(MESSAGE_RES_KEY, messageRes)
         return this
     }
 
@@ -125,9 +136,23 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
         if (it == 0) null else it
     }
 
-    private fun Bundle.getTitle(): String? = getString(TITLE_KEY, null)
+    private fun Bundle.getTitle(): String? {
+        val titleRes = getInt(TITLE_RES_KEY, 0)
+        return if (titleRes == 0) {
+            getString(TITLE_KEY, null)
+        } else {
+            context?.getString(titleRes)
+        }
+    }
 
-    private fun Bundle.getMessage(): String? = getString(MESSAGE_KEY, null)
+    private fun Bundle.getMessage(): String? {
+        val messageRes = getInt(MESSAGE_RES_KEY, 0)
+        return if (messageRes == 0) {
+            getString(MESSAGE_KEY, null)
+        } else {
+            context?.getString(messageRes)
+        }
+    }
 
     sealed class ButtonDescription(
             val text: CharSequence,
@@ -183,7 +208,9 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
         private const val IS_ERROR_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.is_error_key"
         private const val TITLE_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.title_key"
+        private const val TITLE_RES_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.title_res_key"
         private const val MESSAGE_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.message_key"
+        private const val MESSAGE_RES_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.message_res_key"
         private const val ICON_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.icon_key"
     }
 }

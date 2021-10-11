@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.StringRes
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -46,6 +47,11 @@ class ProgressBottomSheetDialogFragment : BottomSheetDialogFragment() {
         return this
     }
 
+    fun setMessage(@StringRes messageRes: Int): ProgressBottomSheetDialogFragment {
+        arguments?.putInt(MESSAGE_RES_KEY, messageRes)
+        return this
+    }
+
     fun show(fragmentManager: FragmentManager): ProgressBottomSheetDialogFragment {
         try {
             fragmentManager.beginTransaction().add(this, TAG).commitNowAllowingStateLoss()
@@ -58,7 +64,14 @@ class ProgressBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     fun isShowing(): Boolean = dialog?.isShowing ?: false
 
-    private fun Bundle.getMessage(): String? = getString(MESSAGE_KEY, null)
+    private fun Bundle.getMessage(): String? {
+        val messageRes = getInt(MESSAGE_RES_KEY, 0)
+        return if (messageRes == 0) {
+            getString(MESSAGE_KEY, null)
+        } else {
+            context?.getString(messageRes)
+        }
+    }
 
     companion object {
 
@@ -84,5 +97,6 @@ class ProgressBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
         private const val TAG = "ru.evotor.ui_kit.dialogs.progress_dialog_fragment.tag"
         private const val MESSAGE_KEY = "ru.evotor.ui_kit.dialogs.progress_dialog_fragment.message_key"
+        private const val MESSAGE_RES_KEY = "ru.evotor.ui_kit.dialogs.progress_dialog_fragment.message_res_key"
     }
 }
