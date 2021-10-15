@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_big_min_height">56dp</dimen>
+    <dimen name="button_big_min_width">72dp</dimen>
+    <dimen name="button_regular_min_height">48dp</dimen>
+
+    <dimen name="button_horizontal_padding">16dp</dimen>
+    <dimen name="button_big_drawable_padding">16dp</dimen>
+    <dimen name="button_text_drawable_padding">8dp</dimen>
+    <dimen name="button_text_horizontal_padding">12dp</dimen>
+    <dimen name="button_text_main_vertical_padding">10dp</dimen>
+    <dimen name="button_text_small_vertical_padding">6dp</dimen>
+
+    <dimen name="button_regular_corner_radius">8dp</dimen>
+
+    <dimen name="heading1_text_size">34sp</dimen>
+    <dimen name="heading2_text_size">30sp</dimen>
+    <dimen name="heading3_text_size">24sp</dimen>
+    <dimen name="heading4_text_size">20sp</dimen>
+    <dimen name="heading5_text_size">16sp</dimen>
+    <dimen name="body1_text_size">16sp</dimen>
+    <dimen name="body2_text_size">14sp</dimen>
+    <dimen name="caption1_text_size">13sp</dimen>
+    <dimen name="caption2_text_size">12sp</dimen>
+    <dimen name="button1_text_size">14sp</dimen>
+    <dimen name="button2_text_size">10sp</dimen>
+    <dimen name="heading1_line_spacing_extra">0sp</dimen>
+    <dimen name="heading2_line_spacing_extra">1sp</dimen>
+    <dimen name="heading3_line_spacing_extra">2sp</dimen>
+    <dimen name="heading4_line_spacing_extra">1sp</dimen>
+    <dimen name="heading5_line_spacing_extra">5sp</dimen>
+    <dimen name="body1_line_spacing_extra">5sp</dimen>
+    <dimen name="body2_line_spacing_extra">5sp</dimen>
+    <dimen name="caption1_line_spacing_extra">1sp</dimen>
+    <dimen name="caption2_line_spacing_extra">2sp</dimen>
+    <dimen name="button1_line_spacing_extra">4sp</dimen>
+    <dimen name="button2_line_spacing_extra">0sp</dimen>
+
+    <dimen name="bottom_sheet_dialog_corner_radius">8dp</dimen>
+    <dimen name="bottom_sheet_dialog_block_horizontal_margin">24dp</dimen>
+    <dimen name="bottom_sheet_dialog_block_vertical_margin">8dp</dimen>
+    <dimen name="bottom_sheet_dialog_margin_horizontal">0dp</dimen>
+
+    <dimen name="bottom_sheet_progress_dialog_horizontal_margin">24dp</dimen>
+</resources>
