@@ -175,11 +175,33 @@
     </style>
 
     <!-- Стиль для Activity -->
-    <style name="EvotorTheme.Activity" parent="Theme.AppCompat">
+    <style name="EvotorTheme.Activity" parent="Theme.MaterialComponents.Bridge">
         <item name="colorPrimary">@color/background_color</item>
         <item name="colorPrimaryDark">@android:color/black</item>
         <item name="android:windowBackground">@color/background_color</item>
         <item name="android:actionBarStyle">@style/EvotorTheme.Toolbar</item>
         <item name="actionBarStyle">@style/EvotorTheme.Toolbar</item>
     </style>
+
+    <!-- Стиль для TextInputLayout -->
+    <style name="EvotorTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="hintTextColor">@color/text_secondary</item>
+        <item name="errorTextColor">@color/error</item>
+        <item name="boxBackgroundColor">@color/popover</item>
+        <item name="boxStrokeColor">@color/edit_text_underline_color</item>
+        <item name="boxStrokeErrorColor">@color/error</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="boxCornerRadiusTopStart">4dp</item>
+        <item name="boxCornerRadiusTopEnd">4dp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="errorIconDrawable">@null</item>
+        <item name="endIconMode">clear_text</item>
+        <item name="endIconTint">@color/text_secondary</item>
+    </style>
+
+    <style name="EvotorTheme.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:textCursorDrawable">@drawable/edit_text_cursor_drawable</item>
+    </style>
+
 </resources>
