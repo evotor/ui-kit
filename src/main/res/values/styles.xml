@@ -183,7 +183,7 @@
         <item name="actionBarStyle">@style/EvotorTheme.Toolbar</item>
     </style>
 
-    <!-- Стиль для TextInputLayout -->
+    <!-- Стили для TextInputLayout -->
     <style name="EvotorTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="hintTextColor">@color/text_secondary</item>
         <item name="errorTextColor">@color/error</item>
@@ -200,8 +200,31 @@
         <item name="endIconTint">@color/text_secondary</item>
     </style>
 
+    <style name="EvotorTheme.TextInputLayout.ExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="hintTextColor">@color/text_secondary</item>
+        <item name="errorTextColor">@color/error</item>
+        <item name="boxBackgroundColor">@color/popover</item>
+        <item name="boxStrokeColor">@color/edit_text_underline_color</item>
+        <item name="boxStrokeErrorColor">@color/error</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="boxCornerRadiusTopStart">4dp</item>
+        <item name="boxCornerRadiusTopEnd">4dp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="endIconTint">@color/text_secondary</item>
+    </style>
+
     <style name="EvotorTheme.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
         <item name="android:textCursorDrawable">@drawable/edit_text_cursor_drawable</item>
     </style>
+
+    <!-- Стиль для RadioButton -->
+    <style name="EvotorTheme.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:textAppearance">@style/EvotorTheme.Text.Body1</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@color/accent</item>
+        <item name="android:paddingStart">@dimen/button_text_drawable_padding</item>
+    </style>
+
 
 </resources>

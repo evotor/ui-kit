@@ -8,26 +8,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import androidx.annotation.DrawableRes
+import android.widget.RadioButton
 import androidx.annotation.StringRes
 import androidx.appcompat.view.ContextThemeWrapper
-import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import gone
 import ru.evotor.ui_kit.R
-import ru.evotor.ui_kit.databinding.BottomSheetLayoutBinding
+import ru.evotor.ui_kit.databinding.BottomSheetRadioGroupLayoutBinding
 import visible
 
+class RadioGroupBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
-class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
-
-    private lateinit var binding: BottomSheetLayoutBinding
+    private lateinit var binding: BottomSheetRadioGroupLayoutBinding
     private val bottomButtons = arrayListOf<ButtonDescription>()
 
+    var onItemSelectedListener: ((position: Int) -> Unit)? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = BottomSheetLayoutBinding.bind(inflater.inflate(R.layout.bottom_sheet_layout, container))
+        binding = BottomSheetRadioGroupLayoutBinding.bind(inflater.inflate(R.layout.bottom_sheet_radio_group_layout, container))
         return binding.root
     }
 
@@ -35,10 +36,6 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         (dialog as BottomSheetDialog?)?.behavior?.peekHeight = activity?.resources?.displayMetrics?.heightPixels
                 ?: 0
-        arguments?.getIcon()?.let {
-            binding.dialogImage.setImageDrawable(ContextCompat.getDrawable(view.context, it))
-            binding.dialogImage.visible()
-        } ?: binding.dialogImage.gone()
         arguments?.getTitle()?.let {
             binding.dialogTitle.text = it
             binding.dialogTitle.visible()
@@ -54,6 +51,33 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     R.drawable.dialog_bottom_background_normal
                 }
         )
+        val selectedItemPos = arguments?.getSelectedItemPos()
+        arguments?.getItems()?.let { list ->
+            for (i in list.indices) {
+                binding.radioGroup.addView(
+                        RadioButton(ContextThemeWrapper(context, R.style.EvotorTheme_RadioButton)).apply {
+                            val layoutParams = LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                                    resources.getDimension(R.dimen.button_big_min_height).toInt()
+                            )
+                            setLayoutParams(layoutParams)
+                            text = list[i]
+                            isChecked = i == selectedItemPos
+                            id = i
+                            background = ResourcesCompat.getDrawable(resources, R.drawable.radio_button_background, null)
+                        }
+                )
+            }
+        }
+        binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            selectedItemPos?.let {
+                if (checkedId != selectedItemPos) {
+                    group.findViewById<RadioButton>(selectedItemPos).isChecked = false
+                }
+                onItemSelectedListener?.invoke(checkedId)
+                dismiss()
+            }
+        }
         bottomButtons.forEach { buttonDescription ->
             val button = Button(ContextThemeWrapper(context, buttonDescription.style), null, buttonDescription.style)
             button.text = buttonDescription.text
@@ -79,27 +103,27 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     override fun getTheme(): Int = R.style.EvotorTheme_BottomSheetDialogTheme
 
-    fun setTitle(title: String): AlertBottomSheetDialogFragment {
+    fun setTitle(title: String): RadioGroupBottomSheetDialogFragment {
         arguments?.putString(TITLE_KEY, title)
         return this
     }
 
-    fun setTitle(@StringRes titleRes: Int): AlertBottomSheetDialogFragment {
+    fun setTitle(@StringRes titleRes: Int): RadioGroupBottomSheetDialogFragment {
         arguments?.putInt(TITLE_RES_KEY, titleRes)
         return this
     }
 
-    fun setMessage(message: String): AlertBottomSheetDialogFragment {
+    fun setMessage(message: String): RadioGroupBottomSheetDialogFragment {
         arguments?.putString(MESSAGE_KEY, message)
         return this
     }
 
-    fun setMessage(@StringRes messageRes: Int): AlertBottomSheetDialogFragment {
+    fun setMessage(@StringRes messageRes: Int): RadioGroupBottomSheetDialogFragment {
         arguments?.putInt(MESSAGE_RES_KEY, messageRes)
         return this
     }
 
-    fun addButton(button: ButtonDescription): AlertBottomSheetDialogFragment {
+    fun addButton(button: ButtonDescription): RadioGroupBottomSheetDialogFragment {
         if (button is ButtonDescription.Dismiss) {
             button.listener = { this.dismiss() }
         }
@@ -107,22 +131,25 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
         return this
     }
 
-    fun setIconDrawable(@DrawableRes iconDrawable: Int): AlertBottomSheetDialogFragment {
-        arguments?.putInt(ICON_KEY, iconDrawable)
-        return this
-    }
-
-    fun setIsError(isError: Boolean): AlertBottomSheetDialogFragment {
+    fun setIsError(isError: Boolean): RadioGroupBottomSheetDialogFragment {
         arguments?.putBoolean(IS_ERROR_KEY, isError)
         return this
     }
 
-    fun setIsCancelable(isCancelable: Boolean): AlertBottomSheetDialogFragment {
+    fun setIsCancelable(isCancelable: Boolean): RadioGroupBottomSheetDialogFragment {
         setCancelable(isCancelable)
         return this
     }
 
-    fun show(fragmentManager: FragmentManager): AlertBottomSheetDialogFragment {
+    fun setItems(list: Array<String>, selectedPosition: Int? = null): RadioGroupBottomSheetDialogFragment {
+        arguments?.putStringArray(ITEMS_KEY, list)
+        selectedPosition?.let {
+            arguments?.putInt(SELECTED_ITEM_KEY, it)
+        }
+        return this
+    }
+
+    fun show(fragmentManager: FragmentManager): RadioGroupBottomSheetDialogFragment {
         try {
             fragmentManager.beginTransaction().add(this, TAG).commitNowAllowingStateLoss()
         } catch (e: IllegalStateException) {
@@ -130,10 +157,6 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
             fragmentManager.beginTransaction().add(this, TAG).commitAllowingStateLoss()
         }
         return this
-    }
-
-    private fun Bundle.getIcon(): Int? = getInt(ICON_KEY).let {
-        if (it == 0) null else it
     }
 
     private fun Bundle.getTitle(): String? {
@@ -154,10 +177,26 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
+    private fun Bundle.getItems(): Array<String>? {
+        return if (containsKey(ITEMS_KEY)) {
+            getStringArray(ITEMS_KEY)
+        } else {
+            null
+        }
+    }
+
+    private fun Bundle.getSelectedItemPos(): Int? {
+        return if (containsKey(SELECTED_ITEM_KEY)) {
+            getInt(SELECTED_ITEM_KEY)
+        } else {
+            null
+        }
+    }
+
     companion object {
 
         @JvmStatic
-        fun newInstance() = AlertBottomSheetDialogFragment().apply {
+        fun newInstance() = RadioGroupBottomSheetDialogFragment().apply {
             arguments = Bundle()
         }
 
@@ -175,13 +214,14 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
             }
         }
 
-        private const val TAG = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.tag"
+        private const val TAG = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.tag"
 
-        private const val IS_ERROR_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.is_error_key"
-        private const val TITLE_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.title_key"
-        private const val TITLE_RES_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.title_res_key"
-        private const val MESSAGE_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.message_key"
-        private const val MESSAGE_RES_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.message_res_key"
-        private const val ICON_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.icon_key"
+        private const val IS_ERROR_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.is_error_key"
+        private const val TITLE_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.title_key"
+        private const val TITLE_RES_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.title_res_key"
+        private const val MESSAGE_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.message_key"
+        private const val MESSAGE_RES_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.message_res_key"
+        private const val ITEMS_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.items_res_key"
+        private const val SELECTED_ITEM_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.selected_item_res_key"
     }
 }
