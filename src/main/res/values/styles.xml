@@ -226,5 +226,13 @@
         <item name="android:paddingStart">@dimen/button_text_drawable_padding</item>
     </style>
 
+    <!-- Стиль для Checkbox -->
+    <style name="EvotorTheme.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="android:paddingTop">@dimen/button_big_drawable_padding</item>
+        <item name="android:paddingBottom">@dimen/button_big_drawable_padding</item>
+        <item name="android:paddingStart">@dimen/button_big_drawable_padding</item>
+        <item name="android:textAppearance">@style/EvotorTheme.Text.Body1</item>
+        <item name="buttonTint">@color/checkbox_color</item>
+    </style>
 
 </resources>
