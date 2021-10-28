@@ -133,7 +133,7 @@
 
     <style name="EvotorTheme.Button.Text" parent="EvotorTheme.Button">
         <item name="android:background">@drawable/btn_transparent_background</item>
-        <item name="android:minHeight">@dimen/button_regular_min_height</item>
+        <item name="android:minHeight">@dimen/button_text_min_height</item>
         <item name="android:textColor">@color/accent</item>
         <item name="android:paddingStart">@dimen/button_text_horizontal_padding</item>
         <item name="android:paddingEnd">@dimen/button_text_horizontal_padding</item>

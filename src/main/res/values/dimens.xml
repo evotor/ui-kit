@@ -3,6 +3,7 @@
     <dimen name="button_big_min_height">56dp</dimen>
     <dimen name="button_big_min_width">72dp</dimen>
     <dimen name="button_regular_min_height">48dp</dimen>
+    <dimen name="button_text_min_height">36dp</dimen>
 
     <dimen name="button_horizontal_padding">16dp</dimen>
     <dimen name="button_big_drawable_padding">16dp</dimen>
