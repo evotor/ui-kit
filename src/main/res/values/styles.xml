@@ -132,7 +132,8 @@
     </style>
 
     <style name="EvotorTheme.Button.Text" parent="EvotorTheme.Button">
-        <item name="android:background">@drawable/btn_transparent_background</item>
+        <item name="android:foreground">@drawable/btn_transparent_background</item>
+        <item name="android:background">@null</item>
         <item name="android:minHeight">@dimen/button_text_min_height</item>
         <item name="android:textColor">@color/accent</item>
         <item name="android:paddingStart">@dimen/button_text_horizontal_padding</item>
@@ -233,6 +234,12 @@
         <item name="android:paddingStart">@dimen/button_big_drawable_padding</item>
         <item name="android:textAppearance">@style/EvotorTheme.Text.Body1</item>
         <item name="buttonTint">@color/checkbox_color</item>
+    </style>
+
+    <!-- Стиль для диалога на весь экран -->
+    <style name="EvotorTheme.Dialog.FullScreen" parent="Theme.MaterialComponents.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/background_color</item>
     </style>
 
 </resources>
