@@ -21,7 +21,7 @@ import ru.evotor.ui_kit.databinding.BottomSheetLayoutBinding
 import visible
 
 
-class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
+class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment() {
 
     private lateinit var binding: BottomSheetLayoutBinding
     private val bottomButtons = arrayListOf<ButtonDescription>()
@@ -33,8 +33,6 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (dialog as BottomSheetDialog?)?.behavior?.peekHeight = activity?.resources?.displayMetrics?.heightPixels
-                ?: 0
         arguments?.getIcon()?.let {
             binding.dialogImage.setImageDrawable(ContextCompat.getDrawable(view.context, it))
             binding.dialogImage.visible()
@@ -47,13 +45,9 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
             binding.dialogMessage.text = it
             binding.dialogMessage.visible()
         } ?: binding.dialogMessage.gone()
-        binding.dialogContentContainer.setBackgroundResource(
-                if (arguments?.getBoolean(IS_ERROR_KEY, false) == true) {
-                    R.drawable.dialog_bottom_background_error
-                } else {
-                    R.drawable.dialog_bottom_background_normal
-                }
-        )
+        if (arguments?.getBoolean(IS_ERROR_KEY, false) == true) {
+            view.setBackgroundResource(R.drawable.dialog_bottom_background_error)
+        }
         bottomButtons.forEach { buttonDescription ->
             val button = Button(ContextThemeWrapper(context, buttonDescription.style), null, buttonDescription.style)
             button.text = buttonDescription.text
@@ -70,14 +64,6 @@ class AlertBottomSheetDialogFragment : BottomSheetDialogFragment() {
             binding.dialogContentContainer.addView(button)
         }
     }
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return super.onCreateDialog(savedInstanceState).apply {
-            window?.setBackgroundDrawable(ColorDrawable(context.getColor(R.color.dialog_transparent_background)))
-        }
-    }
-
-    override fun getTheme(): Int = R.style.EvotorTheme_BottomSheetDialogTheme
 
     fun setTitle(title: String): AlertBottomSheetDialogFragment {
         arguments?.putString(TITLE_KEY, title)

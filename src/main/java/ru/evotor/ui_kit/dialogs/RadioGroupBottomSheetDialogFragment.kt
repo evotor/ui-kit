@@ -20,7 +20,7 @@ import ru.evotor.ui_kit.R
 import ru.evotor.ui_kit.databinding.BottomSheetRadioGroupLayoutBinding
 import visible
 
-class RadioGroupBottomSheetDialogFragment : BottomSheetDialogFragment() {
+class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment() {
 
     private lateinit var binding: BottomSheetRadioGroupLayoutBinding
     private val bottomButtons = arrayListOf<ButtonDescription>()
@@ -34,8 +34,6 @@ class RadioGroupBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (dialog as BottomSheetDialog?)?.behavior?.peekHeight = activity?.resources?.displayMetrics?.heightPixels
-                ?: 0
         arguments?.getTitle()?.let {
             binding.dialogTitle.text = it
             binding.dialogTitle.visible()
@@ -44,13 +42,6 @@ class RadioGroupBottomSheetDialogFragment : BottomSheetDialogFragment() {
             binding.dialogMessage.text = it
             binding.dialogMessage.visible()
         } ?: binding.dialogMessage.gone()
-        binding.dialogContentContainer.setBackgroundResource(
-                if (arguments?.getBoolean(IS_ERROR_KEY, false) == true) {
-                    R.drawable.dialog_bottom_background_error
-                } else {
-                    R.drawable.dialog_bottom_background_normal
-                }
-        )
         val selectedItemPos = arguments?.getSelectedItemPos()
         arguments?.getItems()?.let { list ->
             for (i in list.indices) {
@@ -95,14 +86,6 @@ class RadioGroupBottomSheetDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return super.onCreateDialog(savedInstanceState).apply {
-            window?.setBackgroundDrawable(ColorDrawable(context.getColor(R.color.dialog_transparent_background)))
-        }
-    }
-
-    override fun getTheme(): Int = R.style.EvotorTheme_BottomSheetDialogTheme
-
     fun setTitle(title: String): RadioGroupBottomSheetDialogFragment {
         arguments?.putString(TITLE_KEY, title)
         return this
@@ -128,11 +111,6 @@ class RadioGroupBottomSheetDialogFragment : BottomSheetDialogFragment() {
             button.listener = { this.dismiss() }
         }
         bottomButtons.add(button)
-        return this
-    }
-
-    fun setIsError(isError: Boolean): RadioGroupBottomSheetDialogFragment {
-        arguments?.putBoolean(IS_ERROR_KEY, isError)
         return this
     }
 
@@ -216,7 +194,6 @@ class RadioGroupBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
         private const val TAG = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.tag"
 
-        private const val IS_ERROR_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.is_error_key"
         private const val TITLE_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.title_key"
         private const val TITLE_RES_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.title_res_key"
         private const val MESSAGE_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.message_key"
