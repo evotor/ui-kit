@@ -108,7 +108,11 @@ class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment() {
 
     fun addButton(button: ButtonDescription): RadioGroupBottomSheetDialogFragment {
         if (button is ButtonDescription.Dismiss) {
-            button.listener = { this.dismiss() }
+            if(button.listener == null) {
+                button.listener = {
+                    this.dismiss()
+                }
+            }
         }
         bottomButtons.add(button)
         return this

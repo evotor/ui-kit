@@ -25,8 +25,9 @@ sealed class ButtonDescription(
             listener
     )
 
-    class Dismiss(text: CharSequence) : ButtonDescription(
+    class Dismiss(text: CharSequence, listener: (() -> Unit)? = null) : ButtonDescription(
             text,
-            R.style.EvotorTheme_Button_Regular_Text
+            R.style.EvotorTheme_Button_Regular_Text,
+            listener
     )
 }
