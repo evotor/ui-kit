@@ -16,7 +16,7 @@
         tools:ignore="UselessParent">
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
-            style="@style/EvotorTheme.CircularProgressIndicator"
+            style="@style/EvotorUITheme.CircularProgressIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/dialog_message"
-            style="@style/EvotorTheme.Text.Body1"
+            style="@style/EvotorUITheme.Text.Body1"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_gravity="center"

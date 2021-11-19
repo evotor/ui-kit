@@ -46,7 +46,7 @@ class RecyclerViewDialogFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.EvotorTheme_Dialog_FullScreen)
+        setStyle(STYLE_NORMAL, R.style.EvotorUITheme_Dialog_FullScreen)
     }
 
     fun setTitle(title: String): RecyclerViewDialogFragment {

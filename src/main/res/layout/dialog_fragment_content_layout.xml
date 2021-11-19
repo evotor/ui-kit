@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextAppearance="@style/EvotorTheme.Text.Heading4" />
+        app:titleTextAppearance="@style/EvotorUITheme.Text.Heading4" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dialog_list"

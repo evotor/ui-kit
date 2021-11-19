@@ -46,7 +46,7 @@ class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment() {
         arguments?.getItems()?.let { list ->
             for (i in list.indices) {
                 binding.radioGroup.addView(
-                        RadioButton(ContextThemeWrapper(context, R.style.EvotorTheme_RadioButton)).apply {
+                        RadioButton(ContextThemeWrapper(context, R.style.EvotorUITheme_RadioButton)).apply {
                             val layoutParams = LinearLayout.LayoutParams(
                                     LinearLayout.LayoutParams.MATCH_PARENT,
                                     resources.getDimension(R.dimen.button_big_min_height).toInt()

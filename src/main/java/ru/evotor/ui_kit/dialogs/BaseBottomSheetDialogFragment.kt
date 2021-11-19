@@ -16,7 +16,7 @@ abstract class BaseBottomSheetDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
-    override fun getTheme(): Int = R.style.EvotorTheme_BottomSheetDialogTheme
+    override fun getTheme(): Int = R.style.EvotorUITheme_BottomSheetDialogTheme
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

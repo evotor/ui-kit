@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/dialog_title"
-            style="@style/EvotorTheme.Text.Heading4"
+            style="@style/EvotorUITheme.Text.Heading4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/bottom_sheet_dialog_block_horizontal_margin"
@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/dialog_message"
-            style="@style/EvotorTheme.Text.Body1"
+            style="@style/EvotorUITheme.Text.Body1"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginHorizontal="@dimen/bottom_sheet_dialog_block_horizontal_margin"
