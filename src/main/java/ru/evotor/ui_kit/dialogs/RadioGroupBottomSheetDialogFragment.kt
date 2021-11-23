@@ -1,7 +1,5 @@
 package ru.evotor.ui_kit.dialogs
 
-import android.app.Dialog
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,24 +11,16 @@ import androidx.annotation.StringRes
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.FragmentManager
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import gone
 import ru.evotor.ui_kit.R
 import ru.evotor.ui_kit.databinding.BottomSheetRadioGroupLayoutBinding
 import visible
 
-class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment() {
+class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheetRadioGroupLayoutBinding>() {
 
-    private lateinit var binding: BottomSheetRadioGroupLayoutBinding
     private val bottomButtons = arrayListOf<ButtonDescription>()
 
     var onItemSelectedListener: ((position: Int) -> Unit)? = null
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = BottomSheetRadioGroupLayoutBinding.bind(inflater.inflate(R.layout.bottom_sheet_radio_group_layout, container))
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -85,6 +75,9 @@ class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment() {
             binding.dialogContentContainer.addView(button)
         }
     }
+
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> BottomSheetRadioGroupLayoutBinding
+        get() = BottomSheetRadioGroupLayoutBinding::inflate
 
     fun setTitle(title: String): RadioGroupBottomSheetDialogFragment {
         arguments?.putString(TITLE_KEY, title)

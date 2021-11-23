@@ -169,7 +169,7 @@
     <style name="EvotorUITheme.BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/EvotorUITheme.BottomSheetModalStyle</item>
         <item name="android:windowIsFloating">false</item>
-        <item name="android:windowSoftInputMode">adjustResize|stateVisible</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
 
     <style name="EvotorUITheme.BottomSheetModalStyle" parent="Widget.Design.BottomSheet.Modal">

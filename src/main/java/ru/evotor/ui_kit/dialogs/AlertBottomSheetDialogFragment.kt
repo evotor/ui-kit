@@ -1,7 +1,5 @@
 package ru.evotor.ui_kit.dialogs
 
-import android.app.Dialog
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,23 +11,18 @@ import androidx.annotation.StringRes
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import gone
 import ru.evotor.ui_kit.R
-import ru.evotor.ui_kit.databinding.BottomSheetLayoutBinding
+import ru.evotor.ui_kit.databinding.BottomSheetAlertLayoutBinding
 import visible
 
 
-class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment() {
+class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheetAlertLayoutBinding>() {
 
-    private lateinit var binding: BottomSheetLayoutBinding
     private val bottomButtons = arrayListOf<ButtonDescription>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = BottomSheetLayoutBinding.bind(inflater.inflate(R.layout.bottom_sheet_layout, container))
-        return binding.root
-    }
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> BottomSheetAlertLayoutBinding
+        get() = BottomSheetAlertLayoutBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,7 +39,7 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment() {
             binding.dialogMessage.visible()
         } ?: binding.dialogMessage.gone()
         if (arguments?.getBoolean(IS_ERROR_KEY, false) == true) {
-            view.setBackgroundResource(R.drawable.dialog_bottom_background_error)
+            binding.root.setBackgroundResource(R.drawable.dialog_bottom_background_error)
         }
         bottomButtons.forEach { buttonDescription ->
             val button = Button(ContextThemeWrapper(context, buttonDescription.style), null, buttonDescription.style)
