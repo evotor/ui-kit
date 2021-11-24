@@ -41,6 +41,7 @@
     <dimen name="bottom_sheet_dialog_block_horizontal_margin">24dp</dimen>
     <dimen name="bottom_sheet_dialog_block_vertical_margin">8dp</dimen>
     <dimen name="bottom_sheet_dialog_margin_horizontal">0dp</dimen>
+    <dimen name="content_margin_horizontal">0dp</dimen>
 
     <dimen name="bottom_sheet_progress_dialog_horizontal_margin">24dp</dimen>
 </resources>
