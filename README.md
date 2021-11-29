@@ -16,7 +16,7 @@ allprojects {
 
 ```
 dependencies {
-    implementation 'com.github.evotor:ui-kit:v0.0.2'
+    implementation 'com.github.evotor:ui-kit:0.0.3'
 }
 ```
 
