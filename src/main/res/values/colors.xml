@@ -30,4 +30,9 @@
     <color name="dark_pattern">#121111</color>
     <color name="white54">#89FFFFFF</color>
     <color name="black54">#891A1818</color>
+
+    <color name="keypad_light_color">#3C3C46</color>
+    <color name="keypad_dark_color">#33333A</color>
+    <color name="keypad_additional_light_color">#546E7A</color>
+    <color name="keypad_additional_dark_color">#475B64</color>
 </resources>

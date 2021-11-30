@@ -249,4 +249,24 @@
         <item name="android:windowBackground">@color/background_color</item>
     </style>
 
+    <!-- Стили для keypad'а-->
+    <style name="EvotorUITheme.Keypad.Button.Main" parent="EvotorUITheme.Text.Heading2">
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:background">@color/keypad_dark_color</item>
+    </style>
+
+    <style name="EvotorUITheme.Keypad.Button.Main.Light" parent="EvotorUITheme.Keypad.Button.Main">
+        <item name="android:background">@color/keypad_light_color</item>
+    </style>
+
+    <style name="EvotorUITheme.Keypad.Button.Additional" parent="EvotorUITheme.Text.Heading4">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:background">@color/keypad_additional_dark_color</item>
+    </style>
+
+    <style name="EvotorUITheme.Keypad.Button.Additional.Light" parent="EvotorUITheme.Keypad.Button.Additional">
+        <item name="android:background">@color/keypad_additional_light_color</item>
+    </style>
+
 </resources>
