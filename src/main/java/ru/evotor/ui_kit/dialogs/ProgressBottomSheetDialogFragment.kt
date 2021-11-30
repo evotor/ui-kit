@@ -1,46 +1,27 @@
 package ru.evotor.ui_kit.dialogs
 
-import android.app.Dialog
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.fragment.app.FragmentManager
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import gone
-import ru.evotor.ui_kit.R
+import ru.evotor.ui_kit.databinding.BottomSheetProgressLayoutBinding
 import visible
 
-class ProgressBottomSheetDialogFragment : BottomSheetDialogFragment() {
+class ProgressBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheetProgressLayoutBinding>() {
+
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> BottomSheetProgressLayoutBinding
+        get() = BottomSheetProgressLayoutBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (dialog as BottomSheetDialog?)?.behavior?.peekHeight = activity?.resources?.displayMetrics?.heightPixels
-                ?: 0
-        view.findViewById<TextView>(R.id.dialog_message).let { messageTextView ->
-            arguments?.getMessage()?.let {
-                messageTextView.text = it
-                messageTextView.visible()
-            } ?: messageTextView.gone()
-        }
-
+        arguments?.getMessage()?.let {
+            binding.dialogMessage.text = it
+            binding.dialogMessage.visible()
+        } ?: binding.dialogMessage.gone()
     }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.bottom_sheet_progress_layout, container)
-    }
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return super.onCreateDialog(savedInstanceState).apply {
-            window?.setBackgroundDrawable(ColorDrawable(context.getColor(R.color.dialog_transparent_background)))
-        }
-    }
-
-    override fun getTheme(): Int = R.style.EvotorTheme_BottomSheetDialogTheme
 
     fun setMessage(message: String): ProgressBottomSheetDialogFragment {
         arguments?.putString(MESSAGE_KEY, message)
