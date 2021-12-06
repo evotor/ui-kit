@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="360dp"
+    android:minHeight="256dp">
+
+    <Button
+        android:id="@+id/additional_button_0"
+        style="@style/EvotorUITheme.Keypad.Button.Additional.Light"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/additional_button_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/additional_button_1"
+        style="@style/EvotorUITheme.Keypad.Button.Additional"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/additional_button_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/additional_button_0"
+        app:layout_constraintTop_toBottomOf="@id/additional_button_0" />
+
+    <Button
+        android:id="@+id/additional_button_2"
+        style="@style/EvotorUITheme.Keypad.Button.Additional.Light"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/additional_button_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/additional_button_0"
+        app:layout_constraintTop_toBottomOf="@id/additional_button_1" />
+
+    <Button
+        android:id="@+id/additional_button_3"
+        style="@style/EvotorUITheme.Keypad.Button.Additional"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/additional_button_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/additional_button_0"
+        app:layout_constraintTop_toBottomOf="@id/additional_button_2" />
+
+    <Button
+        android:id="@+id/additional_button_4"
+        style="@style/EvotorUITheme.Keypad.Button.Additional.Light"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/additional_button_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/additional_button_0"
+        app:layout_constraintTop_toBottomOf="@id/additional_button_3" />
+
+    <Button
+        android:id="@+id/additional_button_5"
+        style="@style/EvotorUITheme.Keypad.Button.Additional"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/additional_button_0"
+        app:layout_constraintTop_toBottomOf="@id/additional_button_4" />
+
+    <Button
+        android:id="@+id/button_1"
+        style="@style/EvotorUITheme.Keypad.Button.Main.Light"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/key_text_1"
+        app:layout_constraintBottom_toTopOf="@id/button_4"
+        app:layout_constraintEnd_toStartOf="@id/button_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_2"
+        style="@style/EvotorUITheme.Keypad.Button.Main.Light"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/key_text_2"
+        app:layout_constraintBottom_toBottomOf="@id/button_1"
+        app:layout_constraintEnd_toStartOf="@id/button_3"
+        app:layout_constraintStart_toEndOf="@id/button_1"
+        app:layout_constraintTop_toTopOf="@id/button_1" />
+
+    <Button
+        android:id="@+id/button_3"
+        style="@style/EvotorUITheme.Keypad.Button.Main.Light"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/key_text_3"
+        app:layout_constraintBottom_toBottomOf="@id/button_1"
+        app:layout_constraintEnd_toStartOf="@id/additional_button_0"
+        app:layout_constraintStart_toEndOf="@id/button_2"
+        app:layout_constraintTop_toTopOf="@id/button_1" />
+
+    <Button
+        android:id="@+id/button_4"
+        style="@style/EvotorUITheme.Keypad.Button.Main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/key_text_4"
+        app:layout_constraintBottom_toTopOf="@id/button_7"
+        app:layout_constraintEnd_toStartOf="@id/button_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_1" />
+
+    <Button
+        android:id="@+id/button_5"
+        style="@style/EvotorUITheme.Keypad.Button.Main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/key_text_5"
+        app:layout_constraintBottom_toBottomOf="@id/button_4"
+        app:layout_constraintEnd_toStartOf="@id/button_6"
+        app:layout_constraintStart_toEndOf="@id/button_4"
+        app:layout_constraintTop_toTopOf="@id/button_4" />
+
+    <Button
+        android:id="@+id/button_6"
+        style="@style/EvotorUITheme.Keypad.Button.Main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/key_text_6"
+        app:layout_constraintBottom_toBottomOf="@id/button_4"
+        app:layout_constraintEnd_toStartOf="@id/additional_button_0"
+        app:layout_constraintStart_toEndOf="@id/button_2"
+        app:layout_constraintTop_toTopOf="@id/button_4" />
+
+    <Button
+        android:id="@+id/button_7"
+        style="@style/EvotorUITheme.Keypad.Button.Main.Light"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/key_text_7"
+        app:layout_constraintBottom_toTopOf="@id/button_dot"
+        app:layout_constraintEnd_toStartOf="@id/button_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_4" />
+
+    <Button
+        android:id="@+id/button_8"
+        style="@style/EvotorUITheme.Keypad.Button.Main.Light"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/key_text_8"
+        app:layout_constraintBottom_toBottomOf="@id/button_7"
+        app:layout_constraintEnd_toStartOf="@id/button_9"
+        app:layout_constraintStart_toEndOf="@id/button_7"
+        app:layout_constraintTop_toTopOf="@id/button_7" />
+
+    <Button
+        android:id="@+id/button_9"
+        style="@style/EvotorUITheme.Keypad.Button.Main.Light"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/key_text_9"
+        app:layout_constraintBottom_toBottomOf="@id/button_7"
+        app:layout_constraintEnd_toStartOf="@id/additional_button_0"
+        app:layout_constraintStart_toEndOf="@id/button_8"
+        app:layout_constraintTop_toTopOf="@id/button_7" />
+
+    <Button
+        android:id="@+id/button_dot"
+        style="@style/EvotorUITheme.Keypad.Button.Main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/key_text_dot"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_7" />
+
+    <Button
+        android:id="@+id/button_0"
+        style="@style/EvotorUITheme.Keypad.Button.Main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/key_text_0"
+        app:layout_constraintBottom_toBottomOf="@id/button_dot"
+        app:layout_constraintEnd_toStartOf="@id/button_backspace"
+        app:layout_constraintStart_toEndOf="@id/button_dot"
+        app:layout_constraintTop_toTopOf="@id/button_dot" />
+
+    <ImageButton
+        android:id="@+id/button_backspace"
+        style="@style/EvotorUITheme.Keypad.Button.Main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_backspace"
+        app:layout_constraintBottom_toBottomOf="@id/button_dot"
+        app:layout_constraintEnd_toStartOf="@id/additional_button_0"
+        app:layout_constraintStart_toEndOf="@id/button_0"
+        app:layout_constraintTop_toTopOf="@id/button_dot" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

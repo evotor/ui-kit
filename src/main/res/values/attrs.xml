@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Keypad">
+        <attr name="additionalButtonsCount" format="integer" />
+        <attr name="additionalButtonsWeights" format="string" />
+        <attr name="additionalButton_0_text" format="string" />
+        <attr name="additionalButton_1_text" format="string" />
+        <attr name="additionalButton_2_text" format="string" />
+        <attr name="additionalButton_3_text" format="string" />
+        <attr name="additionalButton_4_text" format="string" />
+        <attr name="additionalButton_5_text" format="string" />
+        <attr name="commaButtonVisible" format="boolean" />
+    </declare-styleable>
+
+</resources>
