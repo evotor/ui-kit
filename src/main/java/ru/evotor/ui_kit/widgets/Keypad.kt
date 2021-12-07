@@ -12,6 +12,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.ImageButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.util.getOrElse
 import ru.evotor.ui_kit.R
@@ -122,6 +123,13 @@ class Keypad @JvmOverloads constructor(
      */
     fun setCommaButtonVisibility(visible: Boolean) {
         binding.buttonDot.visibility = if (visible) VISIBLE else INVISIBLE
+    }
+
+    /**
+     * Возвращает кнопку backspace
+     */
+    fun getButtonBackspace(): ImageButton{
+        return binding.buttonBackspace
     }
 
     override fun setOnKeyListener(l: OnKeyListener?) {
