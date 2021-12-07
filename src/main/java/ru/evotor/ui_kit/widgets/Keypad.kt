@@ -128,7 +128,7 @@ class Keypad @JvmOverloads constructor(
     /**
      * Возвращает кнопку backspace
      */
-    fun getButtonBackspace(): ImageButton{
+    fun getButtonBackspace(): ImageButton {
         return binding.buttonBackspace
     }
 
@@ -153,7 +153,7 @@ class Keypad @JvmOverloads constructor(
         externalKeyListener?.onKey(v, pressedKeyCode, KeyEvent(KeyEvent.ACTION_DOWN, pressedKeyCode))
     }
 
-    private fun initAdditionalButtonsTitles(attr: TypedArray){
+    private fun initAdditionalButtonsTitles(attr: TypedArray) {
         attr.getString(R.styleable.Keypad_additionalButton_0_text)?.let {
             binding.additionalButton0.text = it
         }
