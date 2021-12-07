@@ -215,7 +215,7 @@ class Keypad @JvmOverloads constructor(
             binding.button8,
             binding.button9,
             binding.buttonDot,
-            binding.buttonBackspace,
+            binding.buttonBackspace
     )
 
     private fun getMainButtonsKeyCodes() = SparseIntArray().apply {
