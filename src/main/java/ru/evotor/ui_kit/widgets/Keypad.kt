@@ -12,6 +12,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.ImageButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.util.getOrElse
 import ru.evotor.ui_kit.R
@@ -124,6 +125,13 @@ class Keypad @JvmOverloads constructor(
         binding.buttonDot.visibility = if (visible) VISIBLE else INVISIBLE
     }
 
+    /**
+     * Возвращает кнопку backspace
+     */
+    fun getButtonBackspace(): ImageButton {
+        return binding.buttonBackspace
+    }
+
     override fun setOnKeyListener(l: OnKeyListener?) {
         super.setOnKeyListener(l)
         externalKeyListener = l
@@ -145,7 +153,7 @@ class Keypad @JvmOverloads constructor(
         externalKeyListener?.onKey(v, pressedKeyCode, KeyEvent(KeyEvent.ACTION_DOWN, pressedKeyCode))
     }
 
-    private fun initAdditionalButtonsTitles(attr: TypedArray){
+    private fun initAdditionalButtonsTitles(attr: TypedArray) {
         attr.getString(R.styleable.Keypad_additionalButton_0_text)?.let {
             binding.additionalButton0.text = it
         }
@@ -207,7 +215,7 @@ class Keypad @JvmOverloads constructor(
             binding.button8,
             binding.button9,
             binding.buttonDot,
-            binding.buttonBackspace,
+            binding.buttonBackspace
     )
 
     private fun getMainButtonsKeyCodes() = SparseIntArray().apply {
