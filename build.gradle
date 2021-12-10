@@ -16,7 +16,7 @@ buildscript {
 }
 
 def version_code = 1
-def version_name = "STDEV-9528"
+def version_name = "STDEV-9885"
 
 android {
 
