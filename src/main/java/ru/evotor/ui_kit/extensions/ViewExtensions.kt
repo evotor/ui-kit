@@ -1,3 +1,5 @@
+package ru.evotor.ui_kit.extensions
+
 import android.view.View
 
 fun View.gone() {

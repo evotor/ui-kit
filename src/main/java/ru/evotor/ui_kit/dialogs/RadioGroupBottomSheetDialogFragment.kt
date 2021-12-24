@@ -11,10 +11,10 @@ import androidx.annotation.StringRes
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.FragmentManager
-import gone
+import ru.evotor.ui_kit.extensions.gone
 import ru.evotor.ui_kit.R
 import ru.evotor.ui_kit.databinding.BottomSheetRadioGroupLayoutBinding
-import visible
+import ru.evotor.ui_kit.extensions.visible
 
 class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheetRadioGroupLayoutBinding>() {
 
