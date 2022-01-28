@@ -253,6 +253,7 @@
     <style name="EvotorUITheme.Keypad.Button.Main" parent="EvotorUITheme.Text.Heading2">
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
         <item name="android:background">@color/keypad_dark_color</item>
+        <item name="android:stateListAnimator">@null</item>
     </style>
 
     <style name="EvotorUITheme.Keypad.Button.Main.Light" parent="EvotorUITheme.Keypad.Button.Main">
