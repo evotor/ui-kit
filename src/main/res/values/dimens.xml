@@ -44,4 +44,9 @@
     <dimen name="content_margin_horizontal">0dp</dimen>
 
     <dimen name="bottom_sheet_progress_dialog_horizontal_margin">24dp</dimen>
+
+    <dimen name="default_margin_half">8dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_margin_one_and_half">24dp</dimen>
+    <dimen name="default_margin_double">32dp</dimen>
 </resources>
