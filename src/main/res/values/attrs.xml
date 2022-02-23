@@ -12,4 +12,11 @@
         <attr name="commaButtonVisible" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="DoubleLineRadioButton">
+        <attr name="rb_id" format="reference" />
+        <attr name="checked" format="boolean" />
+        <attr name="title" format="string" />
+        <attr name="subtitle" format="string" />
+    </declare-styleable>
+
 </resources>

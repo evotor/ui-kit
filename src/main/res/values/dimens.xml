@@ -12,6 +12,8 @@
     <dimen name="button_text_main_vertical_padding">10dp</dimen>
     <dimen name="button_text_small_vertical_padding">6dp</dimen>
 
+    <dimen name="double_line_radio_button_text_margin_start">38dp</dimen>
+
     <dimen name="button_regular_corner_radius">8dp</dimen>
 
     <dimen name="heading1_text_size">34sp</dimen>
