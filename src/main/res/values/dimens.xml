@@ -44,4 +44,6 @@
     <dimen name="content_margin_horizontal">0dp</dimen>
 
     <dimen name="bottom_sheet_progress_dialog_horizontal_margin">24dp</dimen>
+
+    <dimen name="frame_regular_corner_radius">8dp</dimen>
 </resources>
