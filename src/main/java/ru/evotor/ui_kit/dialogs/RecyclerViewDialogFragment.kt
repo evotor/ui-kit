@@ -11,10 +11,10 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import gone
+import ru.evotor.ui_kit.extensions.gone
 import ru.evotor.ui_kit.R
 import ru.evotor.ui_kit.databinding.DialogFragmentContentLayoutBinding
-import visible
+import ru.evotor.ui_kit.extensions.visible
 
 class RecyclerViewDialogFragment : DialogFragment() {
 

@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.fragment.app.FragmentManager
-import gone
+import ru.evotor.ui_kit.extensions.gone
 import ru.evotor.ui_kit.databinding.BottomSheetProgressLayoutBinding
-import visible
+import ru.evotor.ui_kit.extensions.visible
 
 class ProgressBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheetProgressLayoutBinding>() {
 
