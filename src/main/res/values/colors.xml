@@ -9,7 +9,8 @@
 
     <color name="button_ripple_color">#51212121</color>
     <color name="button_transparent_ripple_color">#1FFFFFFF</color>
-    <color name="button_additional_background">#FFFFFF</color>
+    <color name="button_additional_background">#4A636E</color>
+    <color name="button_additional_alert_background">#FFFFFF</color>
 
     <color name="text_primary">#FFFFFF</color>
     <color name="text_secondary">#A1A1A1</color>

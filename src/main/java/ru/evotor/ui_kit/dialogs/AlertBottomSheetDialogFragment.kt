@@ -38,11 +38,21 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
             binding.dialogMessage.text = it
             binding.dialogMessage.visible()
         } ?: binding.dialogMessage.gone()
-        if (arguments?.getBoolean(IS_ERROR_KEY, false) == true) {
+        val isError = arguments?.getBoolean(IS_ERROR_KEY, false) ?: false
+        if (isError) {
             binding.root.setBackgroundResource(R.drawable.dialog_bottom_background_error)
         }
         bottomButtons.forEach { buttonDescription ->
-            val button = Button(ContextThemeWrapper(context, buttonDescription.style), null, buttonDescription.style)
+            val button = Button(
+                ContextThemeWrapper(
+                    context,
+                    if (isError) {
+                        buttonDescription.errorStyle
+                    } else {
+                        buttonDescription.style
+                    }
+                ), null, buttonDescription.style
+            )
             button.text = buttonDescription.text
             val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT)

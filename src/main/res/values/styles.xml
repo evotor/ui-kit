@@ -120,6 +120,7 @@
 
     <style name="EvotorUITheme.Button.Big.Additional" parent="EvotorUITheme.Button.Big">
         <item name="android:background">@drawable/btn_big_additional_background</item>
+        <item name="android:textColor">@color/button_text_color_white</item>
     </style>
 
     <style name="EvotorUITheme.Button.Regular" parent="EvotorUITheme.Button">
@@ -131,8 +132,13 @@
         <item name="android:background">@drawable/btn_regular_primary_background</item>
     </style>
 
+    <style name="EvotorUITheme.Button.Regular.Additional.Alert" parent="EvotorUITheme.Button.Regular">
+        <item name="android:background">@drawable/btn_regular_additional_alert_background</item>
+    </style>
+
     <style name="EvotorUITheme.Button.Regular.Additional" parent="EvotorUITheme.Button.Regular">
         <item name="android:background">@drawable/btn_regular_additional_background</item>
+        <item name="android:textColor">@color/button_text_color_white</item>
     </style>
 
     <style name="EvotorUITheme.Button.Regular.Warning" parent="EvotorUITheme.Button.Regular">
