@@ -1,5 +1,5 @@
-[![](https://jitpack.io/v/evotor/integration-library.svg)](https://jitpack.io/#evotor/integration-library)
-[![Gitter](https://badges.gitter.im/evotor/integration-library.svg)](https://gitter.im/evotor/integration-library.svg)
+[![](https://jitpack.io/v/evotor/ui-kit.svg)](https://jitpack.io/#evotor/ui-kit)
+[![Gitter](https://badges.gitter.im/evotor/ui-kit.svg)](https://gitter.im/evotor/ui-kit.svg)
 
 В build.gradle проекта добавьте ссылку на репозиторий jitpack:
 
@@ -16,7 +16,7 @@ allprojects {
 
 ```
 dependencies {
-    implementation 'com.github.evotor:ui-kit:0.0.4'
+    implementation 'com.github.evotor:ui-kit:0.0.8'
 }
 ```
 
