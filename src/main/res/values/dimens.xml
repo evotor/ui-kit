@@ -9,7 +9,7 @@
     <dimen name="button_big_drawable_padding">16dp</dimen>
     <dimen name="button_text_drawable_padding">8dp</dimen>
     <dimen name="button_text_horizontal_padding">12dp</dimen>
-    <dimen name="button_text_main_vertical_padding">10dp</dimen>
+    <dimen name="button_text_main_vertical_padding">8dp</dimen>
     <dimen name="button_text_small_vertical_padding">6dp</dimen>
 
     <dimen name="double_line_radio_button_text_margin_start">38dp</dimen>
