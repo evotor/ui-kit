@@ -6,14 +6,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ru.evotor.ui_kit.R
+import ru.evotor.ui_kit.dialogs.base.DialogShowListener
 
 abstract class BaseBottomSheetDialogFragment<T : ViewBinding> : BottomSheetDialogFragment() {
 
-    protected lateinit var binding : T
+    protected lateinit var binding: T
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return super.onCreateDialog(savedInstanceState).apply {
@@ -38,4 +40,10 @@ abstract class BaseBottomSheetDialogFragment<T : ViewBinding> : BottomSheetDialo
     }
 
     abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> T
+
+    companion object {
+
+        var dialogShowListener: DialogShowListener? = null
+
+    }
 }

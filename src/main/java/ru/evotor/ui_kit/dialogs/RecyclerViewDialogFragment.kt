@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import gone
 import ru.evotor.ui_kit.R
 import ru.evotor.ui_kit.databinding.DialogFragmentContentLayoutBinding
+import ru.evotor.ui_kit.dialogs.base.StackTraceUtils
 import visible
 
 class RecyclerViewDialogFragment : DialogFragment() {
@@ -35,7 +36,7 @@ class RecyclerViewDialogFragment : DialogFragment() {
             binding.toolbar.setNavigationIcon(it)
         }
         title?.let {
-            binding.toolbar.title = it
+            binding.toolbar.title = String.format(it, arguments?.getTitleArgs())
         }
         binding.toolbar.isVisible = icon != null || title != null
         binding.toolbar.setNavigationOnClickListener {
@@ -54,8 +55,15 @@ class RecyclerViewDialogFragment : DialogFragment() {
         return this
     }
 
-    fun setTitle(@StringRes titleRes: Int): RecyclerViewDialogFragment {
+    fun setTitle(
+        @StringRes titleRes: Int,
+        vararg titleArgs: Any
+    ): RecyclerViewDialogFragment {
         arguments?.putInt(TITLE_RES_KEY, titleRes)
+        arguments?.putStringArray(
+            TITLE_ARGS_KEY,
+            titleArgs.map { it.toString() }.toTypedArray()
+        )
         return this
     }
 
@@ -71,6 +79,14 @@ class RecyclerViewDialogFragment : DialogFragment() {
             e.printStackTrace()
             fragmentManager.beginTransaction().add(this, TAG).commitAllowingStateLoss()
         }
+        BaseBottomSheetDialogFragment.dialogShowListener?.onShow(
+            dialogFragment = this,
+            where = StackTraceUtils.getStackTrace(),
+            title = arguments?.getTitle() ?: "[NO_TITLE]",
+            titleArgs = arguments?.getTitleArgs() ?: emptyArray(),
+            message = "[NO_MESSAGE]",
+            messageArgs = emptyArray()
+        )
         return this
     }
 
@@ -92,6 +108,11 @@ class RecyclerViewDialogFragment : DialogFragment() {
         }
     }
 
+    private fun Bundle.getTitleArgs(): Array<String>? {
+        if (!containsKey(TITLE_ARGS_KEY)) return null
+        return getStringArray(TITLE_ARGS_KEY)
+    }
+
     private fun Bundle.getIcon(): Int? = getInt(ICON_RES_KEY).let {
         if (it == 0) null else it
     }
@@ -101,6 +122,7 @@ class RecyclerViewDialogFragment : DialogFragment() {
         private const val TAG = "ru.evotor.ui_kit.dialogs.content_dialog_fragment.tag"
         private const val TITLE_KEY = "ru.evotor.ui_kit.dialogs.content_dialog_fragment.title_key"
         private const val TITLE_RES_KEY = "ru.evotor.ui_kit.dialogs.content_dialog_fragment.title_res_key"
+        private const val TITLE_ARGS_KEY = "ru.evotor.ui_kit.dialogs.content_dialog_fragment.title_args_key"
         private const val ICON_RES_KEY = "ru.evotor.ui_kit.dialogs.content_dialog_fragment.icon_res_key"
 
         @JvmStatic

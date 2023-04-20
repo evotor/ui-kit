@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager
 import gone
 import ru.evotor.ui_kit.R
 import ru.evotor.ui_kit.databinding.BottomSheetRadioGroupLayoutBinding
+import ru.evotor.ui_kit.dialogs.base.StackTraceUtils
 import visible
 
 class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheetRadioGroupLayoutBinding>() {
@@ -25,11 +26,11 @@ class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment<Bottom
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.getTitle()?.let {
-            binding.dialogTitle.text = it
+            binding.dialogTitle.text = String.format(it, arguments?.getTitleArgs())
             binding.dialogTitle.visible()
         } ?: binding.dialogTitle.gone()
         arguments?.getMessage()?.let {
-            binding.dialogMessage.text = it
+            binding.dialogMessage.text = String.format(it, arguments?.getMessageArgs())
             binding.dialogMessage.visible()
         } ?: binding.dialogMessage.gone()
         val selectedItemPos = arguments?.getSelectedItemPos()
@@ -84,8 +85,15 @@ class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment<Bottom
         return this
     }
 
-    fun setTitle(@StringRes titleRes: Int): RadioGroupBottomSheetDialogFragment {
+    fun setTitle(
+        @StringRes titleRes: Int,
+        vararg titleArgs: Any
+    ): RadioGroupBottomSheetDialogFragment {
         arguments?.putInt(TITLE_RES_KEY, titleRes)
+        arguments?.putStringArray(
+            TITLE_ARGS_KEY,
+            titleArgs.map { it.toString() }.toTypedArray()
+        )
         return this
     }
 
@@ -94,8 +102,15 @@ class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment<Bottom
         return this
     }
 
-    fun setMessage(@StringRes messageRes: Int): RadioGroupBottomSheetDialogFragment {
+    fun setMessage(
+        @StringRes messageRes: Int,
+        vararg messageArgs: Any
+    ): RadioGroupBottomSheetDialogFragment {
         arguments?.putInt(MESSAGE_RES_KEY, messageRes)
+        arguments?.putStringArray(
+            MESSAGE_ARGS_KEY,
+            messageArgs.map { it.toString() }.toTypedArray()
+        )
         return this
     }
 
@@ -131,6 +146,14 @@ class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment<Bottom
             e.printStackTrace()
             fragmentManager.beginTransaction().add(this, TAG).commitAllowingStateLoss()
         }
+        dialogShowListener?.onShow(
+            dialogFragment = this,
+            where = StackTraceUtils.getStackTrace(),
+            title = arguments?.getTitle() ?: "[NO_TITLE]",
+            titleArgs = arguments?.getTitleArgs() ?: emptyArray(),
+            message = arguments?.getMessage() ?: "[NO_MESSAGE]",
+            messageArgs = arguments?.getMessageArgs() ?: emptyArray()
+        )
         return this
     }
 
@@ -143,6 +166,11 @@ class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment<Bottom
         }
     }
 
+    private fun Bundle.getTitleArgs(): Array<String>? {
+        if (!containsKey(TITLE_ARGS_KEY)) return null
+        return getStringArray(TITLE_ARGS_KEY)
+    }
+
     private fun Bundle.getMessage(): String? {
         val messageRes = getInt(MESSAGE_RES_KEY, 0)
         return if (messageRes == 0) {
@@ -150,6 +178,11 @@ class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment<Bottom
         } else {
             context?.getString(messageRes)
         }
+    }
+
+    private fun Bundle.getMessageArgs(): Array<String>? {
+        if (!containsKey(MESSAGE_ARGS_KEY)) return null
+        return getStringArray(MESSAGE_ARGS_KEY)
     }
 
     private fun Bundle.getItems(): Array<String>? {
@@ -193,8 +226,10 @@ class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment<Bottom
 
         private const val TITLE_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.title_key"
         private const val TITLE_RES_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.title_res_key"
+        private const val TITLE_ARGS_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.title_args_key"
         private const val MESSAGE_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.message_key"
         private const val MESSAGE_RES_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.message_res_key"
+        private const val MESSAGE_ARGS_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.message_args_key"
         private const val ITEMS_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.items_res_key"
         private const val SELECTED_ITEM_KEY = "ru.evotor.ui_kit.dialogs.list_dialog_fragment.selected_item_res_key"
     }
