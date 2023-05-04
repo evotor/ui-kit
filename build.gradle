@@ -74,9 +74,36 @@ allprojects {
     }
 }
 
+dokkaJavadoc.configure {
+    moduleName = 'ui-kit'
+
+    outputDirectory.set(file("$buildDir/javadoc"))
+
+    dokkaSourceSets {
+        named("main") {
+            noAndroidSdkLink.set(false)
+        }
+    }
+}
+
+dokkaHtml.configure {
+    outputDirectory.set(file("$buildDir/dokkaHtml"))
+
+    dokkaSourceSets {
+        named("main") {
+            noAndroidSdkLink.set(false)
+        }
+    }
+}
+
 task sourceJar(type: Jar) {
     classifier "sources"
     from android.sourceSets.main.java.srcDirs
+}
+
+task javadocJar(type: Jar, dependsOn: dokkaJavadoc) {
+    archiveClassifier = 'javadoc'
+    from dokkaJavadoc.outputDirectory
 }
 
 publishing {
@@ -86,12 +113,22 @@ publishing {
             artifactId "ui-kit"
             version version_name
             artifact(sourceJar)
+            artifact(javadocJar)
             artifact "${project.buildDir}/outputs/aar/${project.archivesBaseName}-release.aar"
 
             //generate pom nodes for dependencies
             pom.withXml {
                 def dependenciesNode = asNode().appendNode('dependencies')
                 configurations.api.allDependencies.each { dependency ->
+                    if (dependency.group) {
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', dependency.group)
+                        dependencyNode.appendNode('artifactId', dependency.name)
+                        dependencyNode.appendNode('version', dependency.version)
+                    }
+                }
+
+                configurations.implementation.allDependencies.each { dependency ->
                     if (dependency.group) {
                         def dependencyNode = dependenciesNode.appendNode('dependency')
                         dependencyNode.appendNode('groupId', dependency.group)
