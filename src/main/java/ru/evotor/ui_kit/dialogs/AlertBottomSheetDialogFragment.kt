@@ -139,47 +139,12 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
             e.printStackTrace()
             fragmentManager.beginTransaction().add(this, TAG).commitAllowingStateLoss()
         }
-        dialogShowListener?.onShow(
-            dialogFragment = this,
-            where = StackTraceUtils.getStackTrace(),
-            title = arguments?.getTitle() ?: "[NO_TITLE]",
-            titleArgs = arguments?.getTitleArgs() ?: emptyArray(),
-            message = arguments?.getMessage() ?: "[NO_MESSAGE]",
-            messageArgs = arguments?.getMessageArgs() ?: emptyArray()
-        )
+        saveStacktrace()
         return this
     }
 
     private fun Bundle.getIcon(): Int? = getInt(ICON_KEY).let {
         if (it == 0) null else it
-    }
-
-    private fun Bundle.getTitle(): String? {
-        val titleRes = getInt(TITLE_RES_KEY, 0)
-        return if (titleRes == 0) {
-            getString(TITLE_KEY, null)
-        } else {
-            context?.getString(titleRes)
-        }
-    }
-
-    private fun Bundle.getTitleArgs(): Array<String>? {
-        if (!containsKey(TITLE_ARGS_KEY)) return null
-        return getStringArray(TITLE_ARGS_KEY)
-    }
-
-    private fun Bundle.getMessage(): String? {
-        val messageRes = getInt(MESSAGE_RES_KEY, 0)
-        return if (messageRes == 0) {
-            getString(MESSAGE_KEY, null)
-        } else {
-            context?.getString(messageRes)
-        }
-    }
-
-    private fun Bundle.getMessageArgs(): Array<String>? {
-        if (!containsKey(MESSAGE_ARGS_KEY)) return null
-        return getStringArray(MESSAGE_ARGS_KEY)
     }
 
     companion object {
@@ -203,15 +168,9 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
             }
         }
 
-        private const val TAG = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.tag"
+        private const val TAG = "ru.evotor.ui_kit.dialogs.AlertBottomSheetDialogFragment.tag"
 
-        private const val IS_ERROR_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.is_error_key"
-        private const val TITLE_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.title_key"
-        private const val TITLE_RES_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.title_res_key"
-        private const val TITLE_ARGS_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.title_args_key"
-        private const val MESSAGE_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.message_key"
-        private const val MESSAGE_RES_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.message_res_key"
-        private const val MESSAGE_ARGS_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.message_args_key"
-        private const val ICON_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.icon_key"
+        private const val IS_ERROR_KEY = "ru.evotor.ui_kit.dialogs.AlertBottomSheetDialogFragment.is_error_key"
+        private const val ICON_KEY = "ru.evotor.ui_kit.dialogs.AlertBottomSheetDialogFragment.icon_key"
     }
 }

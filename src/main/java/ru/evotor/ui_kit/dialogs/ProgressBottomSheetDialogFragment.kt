@@ -47,32 +47,11 @@ class ProgressBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSh
             e.printStackTrace()
             fragmentManager.beginTransaction().add(this, TAG).commitAllowingStateLoss()
         }
-        dialogShowListener?.onShow(
-            dialogFragment = this,
-            where = StackTraceUtils.getStackTrace(),
-            title = "[NO_TITLE]",
-            titleArgs = emptyArray(),
-            message = arguments?.getMessage() ?: "[NO_MESSAGE]",
-            messageArgs = arguments?.getMessageArgs() ?: emptyArray()
-        )
+        saveStacktrace()
         return this
     }
 
     fun isShowing(): Boolean = dialog?.isShowing ?: false
-
-    private fun Bundle.getMessage(): String? {
-        val messageRes = getInt(MESSAGE_RES_KEY, 0)
-        return if (messageRes == 0) {
-            getString(MESSAGE_KEY, null)
-        } else {
-            context?.getString(messageRes)
-        }
-    }
-
-    private fun Bundle.getMessageArgs(): Array<String>? {
-        if (!containsKey(MESSAGE_ARGS_KEY)) return null
-        return getStringArray(MESSAGE_ARGS_KEY)
-    }
 
     companion object {
 
@@ -96,9 +75,6 @@ class ProgressBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSh
             }
         }
 
-        private const val TAG = "ru.evotor.ui_kit.dialogs.progress_dialog_fragment.tag"
-        private const val MESSAGE_KEY = "ru.evotor.ui_kit.dialogs.progress_dialog_fragment.message_key"
-        private const val MESSAGE_RES_KEY = "ru.evotor.ui_kit.dialogs.progress_dialog_fragment.message_res_key"
-        private const val MESSAGE_ARGS_KEY = "ru.evotor.ui_kit.dialogs.progress_dialog_fragment.message_args_key"
+        private const val TAG = "ru.evotor.ui_kit.dialogs.ProgressBottomSheetDialogFragment.tag"
     }
 }
