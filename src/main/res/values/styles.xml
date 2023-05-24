@@ -248,12 +248,6 @@
         <item name="buttonTint">@color/checkbox_color</item>
     </style>
 
-    <!-- Стиль для диалога на весь экран -->
-    <style name="EvotorUITheme.Dialog.FullScreen" parent="Theme.MaterialComponents.Dialog">
-        <item name="android:windowIsFloating">false</item>
-        <item name="android:windowBackground">@color/background_color</item>
-    </style>
-
     <!-- Стили для keypad'а-->
     <style name="EvotorUITheme.Keypad.Button.Main" parent="EvotorUITheme.Text.Heading2">
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
