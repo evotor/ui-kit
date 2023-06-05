@@ -26,11 +26,21 @@ class RadioGroupBottomSheetDialogFragment : BaseBottomSheetDialogFragment<Bottom
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.getTitle()?.let {
-            binding.dialogTitle.text = String.format(it, arguments?.getTitleArgs())
+            val args = arguments?.getTitleArgs()
+            binding.dialogTitle.text = if (args != null) {
+                String.format(it, *args)
+            } else {
+                it
+            }
             binding.dialogTitle.visible()
         } ?: binding.dialogTitle.gone()
         arguments?.getMessage()?.let {
-            binding.dialogMessage.text = String.format(it, arguments?.getMessageArgs())
+            val args = arguments?.getMessageArgs()
+            binding.dialogMessage.text = if (args != null) {
+                String.format(it, *args)
+            } else {
+                it
+            }
             binding.dialogMessage.visible()
         } ?: binding.dialogMessage.gone()
         val selectedItemPos = arguments?.getSelectedItemPos()

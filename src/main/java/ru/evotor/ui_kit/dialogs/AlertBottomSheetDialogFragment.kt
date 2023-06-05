@@ -32,11 +32,21 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
             binding.dialogImage.visible()
         } ?: binding.dialogImage.gone()
         arguments?.getTitle()?.let {
-            binding.dialogTitle.text = String.format(it, arguments?.getTitleArgs())
+            val args = arguments?.getTitleArgs()
+            binding.dialogTitle.text = if (args != null) {
+                String.format(it, *args)
+            } else {
+                it
+            }
             binding.dialogTitle.visible()
         } ?: binding.dialogTitle.gone()
         arguments?.getMessage()?.let {
-            binding.dialogMessage.text = String.format(it, arguments?.getMessageArgs())
+            val args = arguments?.getMessageArgs()
+            binding.dialogMessage.text = if (args != null) {
+                String.format(it, *args)
+            } else {
+            it
+        }
             binding.dialogMessage.visible()
         } ?: binding.dialogMessage.gone()
         val isError = arguments?.getBoolean(IS_ERROR_KEY, false) ?: false
