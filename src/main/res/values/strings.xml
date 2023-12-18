@@ -10,6 +10,6 @@
     <string name="key_text_8" translatable="false">8</string>
     <string name="key_text_9" translatable="false">9</string>
     <string name="key_text_0" translatable="false">0</string>
-    <string name="key_text_dot" translatable="false">,</string>
+    <string name="key_text_dot" translatable="false">.</string>
 
 </resources>
