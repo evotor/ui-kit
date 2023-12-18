@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager
 import gone
 import ru.evotor.ui_kit.R
 import ru.evotor.ui_kit.databinding.BottomSheetAlertLayoutBinding
+import ru.evotor.ui_kit.dialogs.base.StackTraceUtils
 import visible
 
 
@@ -31,11 +32,21 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
             binding.dialogImage.visible()
         } ?: binding.dialogImage.gone()
         arguments?.getTitle()?.let {
-            binding.dialogTitle.text = it
+            val args = arguments?.getTitleArgs()
+            binding.dialogTitle.text = if (args != null) {
+                String.format(it, *args)
+            } else {
+                it
+            }
             binding.dialogTitle.visible()
         } ?: binding.dialogTitle.gone()
         arguments?.getMessage()?.let {
-            binding.dialogMessage.text = it
+            val args = arguments?.getMessageArgs()
+            binding.dialogMessage.text = if (args != null) {
+                String.format(it, *args)
+            } else {
+            it
+        }
             binding.dialogMessage.visible()
         } ?: binding.dialogMessage.gone()
         val isError = arguments?.getBoolean(IS_ERROR_KEY, false) ?: false
@@ -54,13 +65,15 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
                 ), null, buttonDescription.style
             )
             button.text = buttonDescription.text
-            val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT)
+            val layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
             layoutParams.setMargins(
-                    resources.getDimension(R.dimen.bottom_sheet_dialog_block_horizontal_margin).toInt(),
-                    resources.getDimension(R.dimen.bottom_sheet_dialog_block_vertical_margin).toInt(),
-                    resources.getDimension(R.dimen.bottom_sheet_dialog_block_horizontal_margin).toInt(),
-                    resources.getDimension(R.dimen.bottom_sheet_dialog_block_vertical_margin).toInt()
+                resources.getDimension(R.dimen.bottom_sheet_dialog_block_horizontal_margin).toInt(),
+                resources.getDimension(R.dimen.bottom_sheet_dialog_block_vertical_margin).toInt(),
+                resources.getDimension(R.dimen.bottom_sheet_dialog_block_horizontal_margin).toInt(),
+                resources.getDimension(R.dimen.bottom_sheet_dialog_block_vertical_margin).toInt()
             )
             button.layoutParams = layoutParams
             button.setOnClickListener { buttonDescription.listener?.invoke() }
@@ -73,8 +86,15 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
         return this
     }
 
-    fun setTitle(@StringRes titleRes: Int): AlertBottomSheetDialogFragment {
+    fun setTitle(
+        @StringRes titleRes: Int,
+        vararg titleArgs: Any
+    ): AlertBottomSheetDialogFragment {
         arguments?.putInt(TITLE_RES_KEY, titleRes)
+        arguments?.putStringArray(
+            TITLE_ARGS_KEY,
+            titleArgs.map { it.toString() }.toTypedArray()
+        )
         return this
     }
 
@@ -83,14 +103,21 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
         return this
     }
 
-    fun setMessage(@StringRes messageRes: Int): AlertBottomSheetDialogFragment {
+    fun setMessage(
+        @StringRes messageRes: Int,
+        vararg messageArgs: Any
+    ): AlertBottomSheetDialogFragment {
         arguments?.putInt(MESSAGE_RES_KEY, messageRes)
+        arguments?.putStringArray(
+            MESSAGE_ARGS_KEY,
+            messageArgs.map { it.toString() }.toTypedArray()
+        )
         return this
     }
 
     fun addButton(button: ButtonDescription): AlertBottomSheetDialogFragment {
         if (button is ButtonDescription.Dismiss) {
-            if(button.listener == null) {
+            if (button.listener == null) {
                 button.listener = {
                     this.dismiss()
                 }
@@ -122,29 +149,12 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
             e.printStackTrace()
             fragmentManager.beginTransaction().add(this, TAG).commitAllowingStateLoss()
         }
+        saveStacktrace()
         return this
     }
 
     private fun Bundle.getIcon(): Int? = getInt(ICON_KEY).let {
         if (it == 0) null else it
-    }
-
-    private fun Bundle.getTitle(): String? {
-        val titleRes = getInt(TITLE_RES_KEY, 0)
-        return if (titleRes == 0) {
-            getString(TITLE_KEY, null)
-        } else {
-            context?.getString(titleRes)
-        }
-    }
-
-    private fun Bundle.getMessage(): String? {
-        val messageRes = getInt(MESSAGE_RES_KEY, 0)
-        return if (messageRes == 0) {
-            getString(MESSAGE_KEY, null)
-        } else {
-            context?.getString(messageRes)
-        }
     }
 
     companion object {
@@ -159,22 +169,18 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
             fragmentManager.findFragmentByTag(TAG)?.let {
                 try {
                     fragmentManager.beginTransaction().remove(it)
-                            .commitNowAllowingStateLoss()
+                        .commitNowAllowingStateLoss()
                 } catch (e: IllegalStateException) {
                     e.printStackTrace()
                     fragmentManager.beginTransaction().remove(it)
-                            .commitAllowingStateLoss()
+                        .commitAllowingStateLoss()
                 }
             }
         }
 
-        private const val TAG = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.tag"
+        private const val TAG = "ru.evotor.ui_kit.dialogs.AlertBottomSheetDialogFragment.tag"
 
-        private const val IS_ERROR_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.is_error_key"
-        private const val TITLE_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.title_key"
-        private const val TITLE_RES_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.title_res_key"
-        private const val MESSAGE_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.message_key"
-        private const val MESSAGE_RES_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.message_res_key"
-        private const val ICON_KEY = "ru.evotor.ui_kit.dialogs.alert_dialog_fragment.icon_key"
+        private const val IS_ERROR_KEY = "ru.evotor.ui_kit.dialogs.AlertBottomSheetDialogFragment.is_error_key"
+        private const val ICON_KEY = "ru.evotor.ui_kit.dialogs.AlertBottomSheetDialogFragment.icon_key"
     }
 }
