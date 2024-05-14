@@ -25,7 +25,7 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> BottomSheetAlertLayoutBinding
         get() = BottomSheetAlertLayoutBinding::inflate
 
-    val onDestroyCallback: (() -> (Unit))? = null
+    var onDestroyCallback: (() -> (Unit))? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
