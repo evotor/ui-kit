@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -25,7 +24,9 @@ abstract class BaseBottomSheetDialogFragment<T : ViewBinding> : BottomSheetDialo
             title = arguments?.getTitle() ?: "[NO_TITLE]",
             titleArgs = arguments?.getTitleArgs() ?: emptyArray(),
             message = arguments?.getMessage() ?: "[NO_MESSAGE]",
-            messageArgs = arguments?.getMessageArgs() ?: emptyArray()
+            messageArgs = arguments?.getMessageArgs() ?: emptyArray(),
+            details = arguments?.getDetails() ?: "[NO_DETAILS]",
+            detailsArgs = arguments?.getDetailsArgs() ?: emptyArray()
         )
         return super.onCreateDialog(savedInstanceState).apply {
             window?.setBackgroundDrawable(ColorDrawable(context.getColor(R.color.dialog_transparent_background)))
@@ -91,6 +92,20 @@ abstract class BaseBottomSheetDialogFragment<T : ViewBinding> : BottomSheetDialo
         return getStringArray(MESSAGE_ARGS_KEY)
     }
 
+    protected fun Bundle.getDetails(): String? {
+        val detailsRes = getInt(DETAILS_RES_KEY, 0)
+        return if (detailsRes == 0) {
+            getString(DETAILS_KEY, null)
+        } else {
+            context?.getString(detailsRes)
+        }
+    }
+
+    protected fun Bundle.getDetailsArgs(): Array<String>? {
+        if (!containsKey(DETAILS_ARGS_KEY)) return null
+        return getStringArray(DETAILS_ARGS_KEY)
+    }
+
     companion object {
 
         var dialogShowListener: DialogShowListener? = null
@@ -110,6 +125,12 @@ abstract class BaseBottomSheetDialogFragment<T : ViewBinding> : BottomSheetDialo
         protected val MESSAGE_RES_KEY = "ru.evotor.ui_kit.dialogs.BaseBottomSheetDialogFragment.message_res_key"
         @JvmStatic
         protected val MESSAGE_ARGS_KEY = "ru.evotor.ui_kit.dialogs.BaseBottomSheetDialogFragment.message_args_key"
+        @JvmStatic
+        protected val DETAILS_KEY = "ru.evotor.ui_kit.dialogs.BaseBottomSheetDialogFragment.details_key"
+        @JvmStatic
+        protected val DETAILS_RES_KEY = "ru.evotor.ui_kit.dialogs.BaseBottomSheetDialogFragment.details_res_key"
+        @JvmStatic
+        protected val DETAILS_ARGS_KEY = "ru.evotor.ui_kit.dialogs.BaseBottomSheetDialogFragment.details_args_key"
 
     }
 }
