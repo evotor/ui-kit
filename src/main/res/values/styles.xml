@@ -10,6 +10,11 @@
         <item name="actionBarStyle">@style/EvotorUITheme.Toolbar</item>
     </style>
 
+    <style name="ThemeOverlay.EvotorUITheme.TextInputEditText" parent="">
+        <item name="colorControlActivated">@color/accent</item>
+        <item name="android:colorControlActivated">@color/accent</item>
+    </style>
+
     <style name="EvotorUITheme.NoActionBar" parent="EvotorUITheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -198,6 +203,7 @@
 
     <!-- Стили для TextInputLayout -->
     <style name="EvotorUITheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.EvotorUITheme.TextInputEditText</item>
         <item name="hintTextColor">@color/text_secondary</item>
         <item name="errorTextColor">@color/error</item>
         <item name="boxBackgroundColor">@color/popover</item>
@@ -214,6 +220,7 @@
     </style>
 
     <style name="EvotorUITheme.TextInputLayout.ExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.EvotorUITheme.TextInputEditText</item>
         <item name="hintTextColor">@color/text_secondary</item>
         <item name="errorTextColor">@color/error</item>
         <item name="boxBackgroundColor">@color/popover</item>
@@ -246,6 +253,12 @@
         <item name="android:paddingStart">@dimen/button_big_drawable_padding</item>
         <item name="android:textAppearance">@style/EvotorUITheme.Text.Body1</item>
         <item name="buttonTint">@color/checkbox_color</item>
+    </style>
+
+    <!-- Стиль для диалога на весь экран -->
+    <style name="EvotorUITheme.Dialog.FullScreen" parent="Theme.MaterialComponents.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/background_color</item>
     </style>
 
     <!-- Стили для keypad'а-->
