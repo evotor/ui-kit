@@ -220,7 +220,6 @@
     </style>
 
     <style name="EvotorUITheme.TextInputLayout.ExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.EvotorUITheme.TextInputEditText</item>
         <item name="hintTextColor">@color/text_secondary</item>
         <item name="errorTextColor">@color/error</item>
         <item name="boxBackgroundColor">@color/popover</item>
