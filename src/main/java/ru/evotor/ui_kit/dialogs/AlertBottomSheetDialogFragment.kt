@@ -14,7 +14,6 @@ import androidx.fragment.app.FragmentManager
 import gone
 import ru.evotor.ui_kit.R
 import ru.evotor.ui_kit.databinding.BottomSheetAlertLayoutBinding
-import ru.evotor.ui_kit.dialogs.base.StackTraceUtils
 import visible
 
 
@@ -45,10 +44,19 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
             binding.dialogMessage.text = if (args != null) {
                 String.format(it, *args)
             } else {
-            it
-        }
+                it
+            }
             binding.dialogMessage.visible()
         } ?: binding.dialogMessage.gone()
+        arguments?.getDetails()?.let {
+            val args = arguments?.getDetailsArgs()
+            binding.dialogDetails.text = if (args != null) {
+                String.format(it, *args)
+            } else {
+                it
+            }
+            binding.dialogDetails.visible()
+        } ?: binding.dialogDetails.gone()
         val isError = arguments?.getBoolean(IS_ERROR_KEY, false) ?: false
         if (isError) {
             binding.root.setBackgroundResource(R.drawable.dialog_bottom_background_error)
@@ -111,6 +119,23 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
         arguments?.putStringArray(
             MESSAGE_ARGS_KEY,
             messageArgs.map { it.toString() }.toTypedArray()
+        )
+        return this
+    }
+
+    fun setDetails(details: String): AlertBottomSheetDialogFragment {
+        arguments?.putString(DETAILS_KEY, details)
+        return this
+    }
+
+    fun setDetails(
+        @StringRes detailsRes: Int,
+        vararg detailsArgs: Any
+    ): AlertBottomSheetDialogFragment {
+        arguments?.putInt(DETAILS_RES_KEY, detailsRes)
+        arguments?.putStringArray(
+            DETAILS_ARGS_KEY,
+            detailsArgs.map { it.toString() }.toTypedArray()
         )
         return this
     }

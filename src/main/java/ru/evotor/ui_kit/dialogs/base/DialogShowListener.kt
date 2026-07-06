@@ -10,6 +10,8 @@ interface DialogShowListener {
         title: String,
         titleArgs: Array<String>,
         message: String,
-        messageArgs: Array<String>
+        messageArgs: Array<String>,
+        details: String,
+        detailsArgs: Array<String>
     )
 }
