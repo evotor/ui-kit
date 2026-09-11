@@ -80,6 +80,17 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="EvotorUITheme.Text.Body16.Regular" parent="EvotorUITheme.Text">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.Body16.Medium" parent="EvotorUITheme.Text.Body16.Regular">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
     <style name="EvotorUITheme.Text.Caption1" parent="EvotorUITheme.Text">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">@dimen/caption1_text_size</item>
@@ -154,6 +165,18 @@
     <style name="EvotorUITheme.Button.Regular.Text" parent="EvotorUITheme.Button.Regular">
         <item name="android:background">@drawable/btn_transparent_background</item>
         <item name="android:textColor">@color/button_text_color_white</item>
+    </style>
+
+    <style name="EvotorUITheme.Button.Regular.Text.NewErrorStyle" parent="EvotorUITheme.Button.Regular.Text">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="EvotorUITheme.Button.Regular.NewErrorStyle" parent="EvotorUITheme.Button.Regular">
+        <item name="android:background">@drawable/btn_new_error_style_background</item>
+        <item name="android:textSize">@dimen/button1_text_size</item>
+        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0</item>
     </style>
 
     <style name="EvotorUITheme.Button.Text" parent="EvotorUITheme.Button">

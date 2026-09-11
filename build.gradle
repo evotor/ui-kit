@@ -17,7 +17,7 @@ buildscript {
 }
 
 def version_code = 1
-def version_name = "STDEV-14893"
+def version_name = "NEW_ERROR_STYLE16"
 
 android {
 

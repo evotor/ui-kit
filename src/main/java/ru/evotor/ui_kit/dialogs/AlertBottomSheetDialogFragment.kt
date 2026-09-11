@@ -10,6 +10,8 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
+import androidx.core.view.setPadding
 import androidx.fragment.app.FragmentManager
 import gone
 import ru.evotor.ui_kit.R
@@ -26,7 +28,32 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.getIcon()?.let {
+        val isError = arguments?.getBoolean(IS_ERROR_KEY, false) ?: false
+        val useNewErrorStyle = arguments?.getBoolean(USE_NEW_ERROR_STYLE_KEY, false)
+            ?: false
+        val icon = arguments?.getIcon()
+            ?: R.drawable.ic_alert_circle_red_48.takeIf { isError && useNewErrorStyle }
+        binding.root.setPadding(
+            requireContext().resources.getDimensionPixelSize(
+                if (isError && useNewErrorStyle) {
+                    R.dimen.bottom_sheet_dialog_padding_new_error_style
+                } else {
+                    R.dimen.bottom_sheet_dialog_padding
+                }
+            )
+        )
+        if (isError) {
+            binding.apply {
+                if (useNewErrorStyle) {
+                    root.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+                    root.background = getNewErrorStyleBackgroundDrawable()
+                    dragHandle.isVisible = true
+                } else {
+                    root.setBackgroundResource(R.drawable.dialog_bottom_background_error)
+                }
+            }
+        }
+        icon?.let {
             binding.dialogImage.setImageDrawable(ContextCompat.getDrawable(view.context, it))
             binding.dialogImage.visible()
         } ?: binding.dialogImage.gone()
@@ -36,6 +63,12 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
                 String.format(it, *args)
             } else {
                 it
+            }
+            if (isError && useNewErrorStyle) {
+                binding.dialogTitle.layoutParams =
+                    (binding.dialogTitle.layoutParams as LinearLayout.LayoutParams).apply {
+                        topMargin = 0
+                    }
             }
             binding.dialogTitle.visible()
         } ?: binding.dialogTitle.gone()
@@ -57,16 +90,25 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
             }
             binding.dialogDetails.visible()
         } ?: binding.dialogDetails.gone()
-        val isError = arguments?.getBoolean(IS_ERROR_KEY, false) ?: false
-        if (isError) {
-            binding.root.setBackgroundResource(R.drawable.dialog_bottom_background_error)
-        }
+        arguments?.getAttention()?.let {
+            val args = arguments?.getAttentionArgs()
+            binding.dialogAttentionText.text = if (args != null) {
+                String.format(it, *args)
+            } else {
+                it
+            }
+            binding.dialogAttentionText.visible()
+        } ?: binding.dialogAttentionText.gone()
         bottomButtons.forEach { buttonDescription ->
             val button = Button(
                 ContextThemeWrapper(
                     context,
                     if (isError) {
-                        buttonDescription.errorStyle
+                        if (useNewErrorStyle) {
+                            buttonDescription.getNewErrorStyle()
+                        } else {
+                            buttonDescription.errorStyle
+                        }
                     } else {
                         buttonDescription.style
                     }
@@ -78,9 +120,9 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
             layoutParams.setMargins(
-                resources.getDimension(R.dimen.bottom_sheet_dialog_block_horizontal_margin).toInt(),
+                0,
                 resources.getDimension(R.dimen.bottom_sheet_dialog_block_vertical_margin).toInt(),
-                resources.getDimension(R.dimen.bottom_sheet_dialog_block_horizontal_margin).toInt(),
+                0,
                 resources.getDimension(R.dimen.bottom_sheet_dialog_block_vertical_margin).toInt()
             )
             button.layoutParams = layoutParams
@@ -140,6 +182,35 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
         return this
     }
 
+    fun setAttentionText(attentionText: String): AlertBottomSheetDialogFragment {
+        arguments?.putString(ATTENTION_KEY, attentionText)
+        return this
+    }
+
+    fun setAttentionText(
+        @StringRes attentionTextRes: Int,
+        vararg attentionTextArgs: Any
+    ): AlertBottomSheetDialogFragment {
+        arguments?.putInt(ATTENTION_RES_KEY, attentionTextRes)
+        arguments?.putStringArray(
+            ATTENTION_ARGS_KEY,
+            attentionTextArgs.map { it.toString() }.toTypedArray()
+        )
+        return this
+    }
+
+    fun updateAttentionText(text: String?) {
+        binding.dialogAttentionText.text = text
+        binding.dialogAttentionText.isVisible = !text.isNullOrBlank()
+    }
+
+    fun updateAttentionText(
+        @StringRes attentionTextRes: Int,
+        vararg attentionTextArgs: Any
+    ) {
+        updateAttentionText(requireContext().getString(attentionTextRes, *attentionTextArgs))
+    }
+
     fun addButton(button: ButtonDescription): AlertBottomSheetDialogFragment {
         if (button is ButtonDescription.Dismiss) {
             if (button.listener == null) {
@@ -162,6 +233,11 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
         return this
     }
 
+    fun setUseNewErrorStyle(useNewErrorStyle: Boolean): AlertBottomSheetDialogFragment {
+        arguments?.putBoolean(USE_NEW_ERROR_STYLE_KEY, useNewErrorStyle)
+        return this
+    }
+
     fun setIsCancelable(isCancelable: Boolean): AlertBottomSheetDialogFragment {
         setCancelable(isCancelable)
         return this
@@ -180,6 +256,14 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
 
     private fun Bundle.getIcon(): Int? = getInt(ICON_KEY).let {
         if (it == 0) null else it
+    }
+
+    private fun getNewErrorStyleBackgroundDrawable() = with(requireContext()) {
+        FigmaGlowDrawable(
+            context = this,
+            backgroundColor = ContextCompat.getColor(this, R.color.table_zebra),
+            gradientColors = intArrayOf(0x739541DE, 0x73EE3D3D, 0x73BD5D22)
+        )
     }
 
     companion object {
@@ -206,6 +290,7 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
         private const val TAG = "ru.evotor.ui_kit.dialogs.AlertBottomSheetDialogFragment.tag"
 
         private const val IS_ERROR_KEY = "ru.evotor.ui_kit.dialogs.AlertBottomSheetDialogFragment.is_error_key"
+        private const val USE_NEW_ERROR_STYLE_KEY = "ru.evotor.ui_kit.dialogs.AlertBottomSheetDialogFragment.use_new_error_style_key"
         private const val ICON_KEY = "ru.evotor.ui_kit.dialogs.AlertBottomSheetDialogFragment.icon_key"
     }
 }

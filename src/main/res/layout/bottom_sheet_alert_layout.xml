@@ -4,32 +4,41 @@
     android:id="@+id/dialog_content_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clipToPadding="false"
     android:orientation="vertical"
-    android:paddingVertical="@dimen/default_margin"
-    android:paddingBottom="@dimen/bottom_sheet_dialog_block_vertical_margin"
     tools:background="@drawable/dialog_bottom_background_normal"
-    tools:ignore="UselessParent">
+    tools:ignore="UselessParent"
+    tools:padding="@dimen/bottom_sheet_dialog_padding">
+
+    <View
+        android:id="@+id/drag_handle"
+        android:layout_width="32dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="-8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_drag_handle"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/dialog_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginHorizontal="@dimen/bottom_sheet_dialog_block_horizontal_margin"
         android:scaleType="centerCrop"
-        android:visibility="gone"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ic_alert_circle_red_48" />
 
     <TextView
         android:id="@+id/dialog_title"
         style="@style/EvotorUITheme.Text.Heading4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/bottom_sheet_dialog_block_horizontal_margin"
         android:layout_marginTop="@dimen/bottom_sheet_dialog_block_vertical_margin"
         android:layout_marginBottom="@dimen/bottom_sheet_dialog_block_vertical_margin"
         android:gravity="start"
-        tools:text="Dialog title" />
+        tools:text="Dialog title, soooooooooooo long" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +51,6 @@
             style="@style/EvotorUITheme.Text.Body1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/bottom_sheet_dialog_block_horizontal_margin"
             android:layout_marginTop="@dimen/bottom_sheet_dialog_block_vertical_margin"
             android:layout_marginBottom="@dimen/bottom_sheet_dialog_block_vertical_margin"
             android:gravity="start"
@@ -53,7 +61,6 @@
             style="@style/EvotorUITheme.Text.Caption2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/bottom_sheet_dialog_block_horizontal_margin"
             android:layout_marginBottom="@dimen/bottom_sheet_dialog_block_vertical_margin"
             android:gravity="start"
             android:textColor="@color/text_secondary"
@@ -61,8 +68,16 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="@dimen/bottom_sheet_dialog_block_vertical_margin" />
-
+    <TextView
+        android:id="@+id/dialog_attention_text"
+        style="@style/EvotorUITheme.Text.Body16.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bottom_sheet_dialog_block_vertical_margin"
+        android:layout_marginBottom="@dimen/bottom_sheet_dialog_block_vertical_margin"
+        android:gravity="center"
+        android:textColor="@color/text_secondary"
+        android:visibility="gone"
+        tools:text="Закроется через 10"
+        tools:visibility="visible" />
 </LinearLayout>
