@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:background="@drawable/dialog_bottom_background_normal"
     tools:ignore="UselessParent"
-    tools:padding="@dimen/bottom_sheet_dialog_padding">
+    tools:padding="@dimen/bottom_sheet_dialog_padding_new_error_style">
 
     <View
         android:id="@+id/drag_handle"
@@ -16,7 +16,7 @@
         android:layout_height="4dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="-8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/bg_drag_handle"
         android:visibility="gone"
         tools:visibility="visible" />
@@ -61,7 +61,7 @@
             style="@style/EvotorUITheme.Text.Caption2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/bottom_sheet_dialog_block_vertical_margin"
+            android:paddingBottom="@dimen/bottom_sheet_dialog_block_vertical_margin"
             android:gravity="start"
             android:textColor="@color/text_secondary"
             tools:text="Dialog details" />
@@ -73,8 +73,7 @@
         style="@style/EvotorUITheme.Text.Body16.Medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/bottom_sheet_dialog_block_vertical_margin"
-        android:layout_marginBottom="@dimen/bottom_sheet_dialog_block_vertical_margin"
+        android:layout_marginBottom="@dimen/bottom_sheet_dialog_padding_new_error_style"
         android:gravity="center"
         android:textColor="@color/text_secondary"
         android:visibility="gone"

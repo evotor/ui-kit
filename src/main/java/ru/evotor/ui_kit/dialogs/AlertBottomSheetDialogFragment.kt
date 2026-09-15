@@ -1,5 +1,16 @@
 package ru.evotor.ui_kit.dialogs
 
+import android.content.Context
+import android.graphics.BlurMaskFilter
+import android.graphics.Canvas
+import android.graphics.ColorFilter
+import android.graphics.LinearGradient
+import android.graphics.Paint
+import android.graphics.Path
+import android.graphics.PixelFormat
+import android.graphics.RectF
+import android.graphics.Shader
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +24,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
 import androidx.fragment.app.FragmentManager
+import dpToPx
 import gone
 import ru.evotor.ui_kit.R
 import ru.evotor.ui_kit.databinding.BottomSheetAlertLayoutBinding
@@ -46,7 +58,7 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
             binding.apply {
                 if (useNewErrorStyle) {
                     root.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-                    root.background = getNewErrorStyleBackgroundDrawable()
+                    root.background = NewErrorStyleBackgroundDrawable(requireContext())
                     dragHandle.isVisible = true
                 } else {
                     root.setBackgroundResource(R.drawable.dialog_bottom_background_error)
@@ -87,6 +99,14 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
                 String.format(it, *args)
             } else {
                 it
+            }
+            if (isError && useNewErrorStyle) {
+                binding.dialogDetails.setPadding(
+                    binding.dialogDetails.paddingStart,
+                    requireContext().resources.getDimensionPixelSize(R.dimen.bottom_sheet_dialog_block_vertical_margin),
+                    binding.dialogDetails.paddingEnd,
+                    requireContext().resources.getDimensionPixelSize(R.dimen.bottom_sheet_dialog_padding_new_error_style),
+                )
             }
             binding.dialogDetails.visible()
         } ?: binding.dialogDetails.gone()
@@ -258,14 +278,6 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
         if (it == 0) null else it
     }
 
-    private fun getNewErrorStyleBackgroundDrawable() = with(requireContext()) {
-        FigmaGlowDrawable(
-            context = this,
-            backgroundColor = ContextCompat.getColor(this, R.color.table_zebra),
-            gradientColors = intArrayOf(0x739541DE, 0x73EE3D3D, 0x73BD5D22)
-        )
-    }
-
     companion object {
 
         @JvmStatic
@@ -293,4 +305,85 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
         private const val USE_NEW_ERROR_STYLE_KEY = "ru.evotor.ui_kit.dialogs.AlertBottomSheetDialogFragment.use_new_error_style_key"
         private const val ICON_KEY = "ru.evotor.ui_kit.dialogs.AlertBottomSheetDialogFragment.icon_key"
     }
+}
+
+private class NewErrorStyleBackgroundDrawable(context: Context) : Drawable() {
+    private val clipPath = Path()
+    private val cornerRadius = context.dpToPx(8).toFloat()
+    private val backgroundPaint = Paint().apply {
+        color = ContextCompat.getColor(context, R.color.table_zebra)
+        style = Paint.Style.FILL
+    }
+
+    private val glowPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.FILL
+    }
+
+    override fun draw(canvas: Canvas) {
+        if (bounds.isEmpty || bounds.width() == 0 || bounds.height() == 0) {
+            return
+        }
+
+        val viewHeight = bounds.height()
+        val viewWidth = bounds.width()
+
+        val blurRadius = (viewHeight * 0.5f).coerceAtLeast(1f)
+        glowPaint.maskFilter = BlurMaskFilter(blurRadius, BlurMaskFilter.Blur.NORMAL)
+
+        clipPath.reset()
+        val radii = floatArrayOf(
+            cornerRadius,
+            cornerRadius,
+            cornerRadius,
+            cornerRadius,
+            0f,
+            0f,
+            0f,
+            0f
+        )
+        clipPath.addRoundRect(
+            RectF(
+                bounds.left.toFloat(),
+                bounds.top.toFloat(),
+                bounds.right.toFloat(),
+                bounds.bottom.toFloat()
+            ),
+            radii,
+            Path.Direction.CW
+        )
+
+        canvas.save()
+        canvas.clipPath(clipPath) // Обрезаем все, что выходит за скругленные рамки View
+
+        canvas.drawRect(bounds, backgroundPaint)
+
+        val halfHeight = viewHeight / 2
+        val quarterWidth = viewWidth / 4
+
+        val leftX = bounds.left.toFloat() - quarterWidth
+        val rightX = bounds.right.toFloat() + quarterWidth
+        val topY = bounds.top.toFloat() - halfHeight
+        val bottomY = bounds.top.toFloat() + halfHeight
+
+        glowPaint.shader = LinearGradient(
+            leftX,
+            bounds.top.toFloat(),
+            rightX,
+            bounds.top.toFloat(),
+            intArrayOf(0x739541DE, 0x73EE3D3D, 0x73BD5D22),
+            null,
+            Shader.TileMode.CLAMP
+        )
+
+        val ovalBounds = RectF(leftX, topY, rightX, bottomY)
+        canvas.drawOval(ovalBounds, glowPaint)
+
+        canvas.restore()
+    }
+
+    override fun setAlpha(alpha: Int) {}
+    override fun setColorFilter(colorFilter: ColorFilter?) {}
+
+    @Deprecated("Deprecated in Java")
+    override fun getOpacity(): Int = PixelFormat.TRANSLUCENT
 }
