@@ -29,6 +29,7 @@ import gone
 import ru.evotor.ui_kit.R
 import ru.evotor.ui_kit.databinding.BottomSheetAlertLayoutBinding
 import visible
+import androidx.core.graphics.withClip
 
 
 class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheetAlertLayoutBinding>() {
@@ -327,7 +328,7 @@ private class NewErrorStyleBackgroundDrawable(context: Context) : Drawable() {
         val viewHeight = bounds.height()
         val viewWidth = bounds.width()
 
-        val blurRadius = (viewHeight * 0.5f).coerceAtLeast(1f)
+        val blurRadius = (minOf(viewWidth, viewHeight) * 0.25f).coerceAtLeast(1f)
         glowPaint.maskFilter = BlurMaskFilter(blurRadius, BlurMaskFilter.Blur.NORMAL)
 
         clipPath.reset()
@@ -352,33 +353,29 @@ private class NewErrorStyleBackgroundDrawable(context: Context) : Drawable() {
             Path.Direction.CW
         )
 
-        canvas.save()
-        canvas.clipPath(clipPath) // Обрезаем все, что выходит за скругленные рамки View
+        canvas.withClip(clipPath) {
+            drawRect(bounds, backgroundPaint)
 
-        canvas.drawRect(bounds, backgroundPaint)
+            val halfHeight = viewHeight / 2
 
-        val halfHeight = viewHeight / 2
-        val quarterWidth = viewWidth / 4
+            val leftX = bounds.left.toFloat()
+            val rightX = bounds.right.toFloat()
+            val topY = bounds.top.toFloat() - (halfHeight * 0.75f)
+            val bottomY = bounds.top.toFloat() + (halfHeight * 0.75f)
 
-        val leftX = bounds.left.toFloat() - quarterWidth
-        val rightX = bounds.right.toFloat() + quarterWidth
-        val topY = bounds.top.toFloat() - halfHeight
-        val bottomY = bounds.top.toFloat() + halfHeight
+            glowPaint.shader = LinearGradient(
+                leftX,
+                bounds.top.toFloat(),
+                rightX,
+                bounds.top.toFloat(),
+                intArrayOf(0x409541DE, 0x40EE3D3D, 0x40BD5D22),
+                null,
+                Shader.TileMode.CLAMP
+            )
 
-        glowPaint.shader = LinearGradient(
-            leftX,
-            bounds.top.toFloat(),
-            rightX,
-            bounds.top.toFloat(),
-            intArrayOf(0x739541DE, 0x73EE3D3D, 0x73BD5D22),
-            null,
-            Shader.TileMode.CLAMP
-        )
-
-        val ovalBounds = RectF(leftX, topY, rightX, bottomY)
-        canvas.drawOval(ovalBounds, glowPaint)
-
-        canvas.restore()
+            val ovalBounds = RectF(leftX, topY, rightX, bottomY)
+            drawOval(ovalBounds, glowPaint)
+        }
     }
 
     override fun setAlpha(alpha: Int) {}
