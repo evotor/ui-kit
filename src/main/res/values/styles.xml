@@ -167,15 +167,10 @@
         <item name="android:textColor">@color/button_text_color_white</item>
     </style>
 
-    <style name="EvotorUITheme.Button.Regular.Text.NewErrorStyle" parent="EvotorUITheme.Button.Regular.Text">
-        <item name="android:textStyle">bold</item>
-    </style>
-
     <style name="EvotorUITheme.Button.Regular.NewErrorStyle" parent="EvotorUITheme.Button.Regular">
         <item name="android:background">@drawable/btn_new_error_style_background</item>
         <item name="android:textSize">@dimen/button1_text_size</item>
         <item name="android:textColor">@color/text_dark</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0</item>
     </style>
 

@@ -36,6 +36,6 @@ sealed class ButtonDescription(
             R.style.EvotorUITheme_Button_Regular_Text,
             listener
     ) {
-        override fun getNewErrorStyle() = R.style.EvotorUITheme_Button_Regular_Text_NewErrorStyle
+        override fun getNewErrorStyle() = style
     }
 }
