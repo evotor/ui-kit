@@ -106,6 +106,20 @@ abstract class BaseBottomSheetDialogFragment<T : ViewBinding> : BottomSheetDialo
         return getStringArray(DETAILS_ARGS_KEY)
     }
 
+    protected fun Bundle.getAttention(): String? {
+        val detailsRes = getInt(ATTENTION_RES_KEY, 0)
+        return if (detailsRes == 0) {
+            getString(ATTENTION_KEY, null)
+        } else {
+            context?.getString(detailsRes)
+        }
+    }
+
+    protected fun Bundle.getAttentionArgs(): Array<String>? {
+        if (!containsKey(ATTENTION_ARGS_KEY)) return null
+        return getStringArray(ATTENTION_ARGS_KEY)
+    }
+
     companion object {
 
         var dialogShowListener: DialogShowListener? = null
@@ -131,6 +145,12 @@ abstract class BaseBottomSheetDialogFragment<T : ViewBinding> : BottomSheetDialo
         protected val DETAILS_RES_KEY = "ru.evotor.ui_kit.dialogs.BaseBottomSheetDialogFragment.details_res_key"
         @JvmStatic
         protected val DETAILS_ARGS_KEY = "ru.evotor.ui_kit.dialogs.BaseBottomSheetDialogFragment.details_args_key"
+        @JvmStatic
+        protected val ATTENTION_KEY = "ru.evotor.ui_kit.dialogs.BaseBottomSheetDialogFragment.attention_key"
+        @JvmStatic
+        protected val ATTENTION_RES_KEY = "ru.evotor.ui_kit.dialogs.BaseBottomSheetDialogFragment.attention_res_key"
+        @JvmStatic
+        protected val ATTENTION_ARGS_KEY = "ru.evotor.ui_kit.dialogs.BaseBottomSheetDialogFragment.details_args_key"
 
     }
 }

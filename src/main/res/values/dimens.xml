@@ -41,6 +41,8 @@
 
     <dimen name="bottom_sheet_dialog_corner_radius">8dp</dimen>
     <dimen name="bottom_sheet_dialog_block_horizontal_margin">24dp</dimen>
+    <dimen name="bottom_sheet_dialog_padding">24dp</dimen>
+    <dimen name="bottom_sheet_dialog_padding_new_error_style">16dp</dimen>
     <dimen name="bottom_sheet_dialog_block_vertical_margin">8dp</dimen>
     <dimen name="bottom_sheet_dialog_margin_horizontal">0dp</dimen>
     <dimen name="content_margin_horizontal">0dp</dimen>
