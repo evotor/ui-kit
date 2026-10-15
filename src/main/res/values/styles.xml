@@ -400,30 +400,17 @@
 
     <style name="EvotorUITheme.Button.NewDialog.Primary" parent="EvotorUITheme.Button">
         <item name="android:background">@drawable/btn_dialog_v2_primary_background</item>
-        <item name="android:textColor">@color/text_primary</item>
-        <item name="android:textAllCaps">false</item>
         <item name="android:minHeight">@dimen/button_dialog_v2_min_height</item>
-        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="android:textAllCaps">false</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/button_dialog_v2_text_size</item>
-        <item name="android:lineHeight">@dimen/button_dialog_v2_line_height</item>
-        <item name="android:lineSpacingExtra">@dimen/button_dialog_v2_line_spacing_extra</item>
-        <item name="android:letterSpacing">0</item>
-        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@style/EvotorUITheme.Text.BodyLarge.Strong</item>
     </style>
 
     <style name="EvotorUITheme.Button.NewDialog.Secondary" parent="EvotorUITheme.Button">
         <item name="android:background">@drawable/btn_dialog_v2_secondary_background</item>
-<!--        <item name="android:textColor">@color/text_primary</item>-->
-        <item name="android:textAllCaps">false</item>
         <item name="android:minHeight">@dimen/button_dialog_v2_min_height</item>
-<!--        <item name="android:fontFamily">@font/manrope_bold</item>-->
+        <item name="android:textAllCaps">false</item>
         <item name="android:textStyle">bold</item>
-<!--        <item name="android:textSize">@dimen/button_new_dialog_text_size</item>-->
-<!--        <item name="android:lineHeight">@dimen/button_new_dialog_line_height</item>-->
-<!--        <item name="android:lineSpacingExtra">@dimen/button_new_dialog_line_spacing_extra</item>-->
-<!--        <item name="android:letterSpacing">0</item>-->
-        <item name="android:gravity">center</item>
         <item name="android:textAppearance">@style/EvotorUITheme.Text.BodyLarge.Strong</item>
     </style>
 
