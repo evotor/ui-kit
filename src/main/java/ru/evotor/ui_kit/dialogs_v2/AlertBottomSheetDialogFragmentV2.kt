@@ -1,18 +1,14 @@
 package ru.evotor.ui_kit.dialogs_v2
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.appcompat.view.ContextThemeWrapper
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
@@ -36,13 +32,14 @@ class AlertBottomSheetDialogFragmentV2 :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val isError = arguments?.getBoolean(IS_ERROR_KEY, false) ?: false
+        binding.root.background = null
         if (isError) {
             binding.apply {
-                root.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-                root.background = NewErrorStyleBackgroundDrawable(requireContext())
+                dialogContentContainer.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+                dialogContentContainer.background = NewErrorStyleBackgroundDrawable(requireContext())
             }
         } else {
-            binding.root.setBackgroundResource(R.drawable.dialog_v2_bottom_background)
+            binding.dialogContentContainer.setBackgroundResource(R.drawable.dialog_v2_bottom_background)
         }
         val icon = arguments?.getIcon()
             ?: R.drawable.ic_alert_circle_red_48.takeIf { isError }
@@ -145,51 +142,7 @@ class AlertBottomSheetDialogFragmentV2 :
             button.setOnClickListener { buttonDescription.listener?.invoke() }
             binding.dialogContentContainer.addView(button)
         }
-        addCloseButton()
-    }
-
-    private fun addCloseButton() {
-        val bottomSheet = dialog?.findViewById<View>(
-            com.google.android.material.R.id.design_bottom_sheet
-        ) ?: return
-        val parent = bottomSheet.parent as? ViewGroup ?: return
-        val res = resources
-        val iconSize = res.getDimensionPixelSize(R.dimen.bottom_sheet_dialog_close_button_icon_size)
-        val button = ImageView(requireContext()).apply {
-            id = R.id.dialog_close_button
-            background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_dialog_close_button)
-            scaleType = ImageView.ScaleType.CENTER
-            val icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_close)
-            icon?.setBounds(0, 0, iconSize, iconSize)
-            setImageDrawable(icon)
-            setOnClickListener { dismiss() }
-        }
-        val size = res.getDimensionPixelSize(R.dimen.bottom_sheet_dialog_close_button_size)
-        val margin = res.getDimensionPixelSize(R.dimen.bottom_sheet_dialog_close_button_margin)
-        val gap = res.getDimensionPixelSize(R.dimen.bottom_sheet_dialog_close_button_margin_top)
-        val params = when (parent) {
-            is FrameLayout -> FrameLayout.LayoutParams(size, size).apply {
-                gravity = Gravity.TOP or Gravity.END
-                marginEnd = margin
-            }
-            is CoordinatorLayout -> CoordinatorLayout.LayoutParams(size, size).apply {
-                gravity = Gravity.TOP or Gravity.END
-                marginEnd = margin
-            }
-            else -> ViewGroup.MarginLayoutParams(size, size).apply {
-                marginEnd = margin
-            }
-        }
-        parent.addView(button, params)
-        parent.clipChildren = false
-        parent.clipToPadding = false
-
-        bottomSheet.addOnLayoutChangeListener { _, _, top, _, _, _, _, _, _ ->
-            button.translationY = (top - size - gap).toFloat()
-        }
-        bottomSheet.post {
-            button.translationY = (bottomSheet.top - size - gap).toFloat()
-        }
+        binding.dialogCloseButton.setOnClickListener { dismiss() }
     }
 
     fun setTitle(title: String): AlertBottomSheetDialogFragmentV2 {
