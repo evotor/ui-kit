@@ -6,6 +6,9 @@
     <color name="error">#EE3D3D</color>
     <color name="error_50">#7FEE3D3D</color>
     <color name="dialog_transparent_background">#7F000000</color>
+    <color name="dialog_close_button_background">#223649</color>
+    <color name="drag_handle_new_dialog_color">#40EBEEFF</color>
+    <color name="button_new_dialog_shadow">#5900B775</color>
 
     <color name="button_ripple_color">#51212121</color>
     <color name="button_transparent_ripple_color">#1FFFFFFF</color>
@@ -36,4 +39,49 @@
     <color name="keypad_dark_color">#33333A</color>
     <color name="keypad_additional_light_color">#546E7A</color>
     <color name="keypad_additional_dark_color">#475B64</color>
+
+    <color name="bg_surface">#093133</color>
+    <color name="bg_surface_null">#00093133</color>
+    <color name="bg_neutral_primary">#3DB1B7FF</color>
+    <color name="bg_neutral_secondary">#0FB1B7FF</color>
+    <color name="bg_neutral_null">#00B1B7FF</color>
+    <color name="bg_accent">#00B775</color>
+    <color name="bg_selected">#3D7733FF</color>
+    <color name="bg_popup">#223649</color>
+    <color name="bg_scrim">#E605071F</color>
+    <color name="bg_positive">#00B775</color>
+    <color name="bg_negative">#FF547E</color>
+    <color name="bg_warning">#3DFFB76E</color>
+    <color name="bg_info">#335663FF</color>
+    <color name="bg_divider">#0FD8D8FD</color>
+    <color name="bg_extra_1">#1FFFEE05</color>
+    <color name="bg_extra_2">#3D6E6EFF</color>
+
+    <color name="text_icon_primary">#FFFFFF</color>
+    <color name="text_icon_secondary">#99EBEEFF</color>
+    <color name="text_icon_disabled">#40EBEEFF</color>
+    <color name="text_icon_accent">#00E595</color>
+    <color name="text_icon_invert">#E605071F</color>
+    <color name="text_icon_positive">#00E595</color>
+    <color name="text_icon_negative">#FF6A8F</color>
+    <color name="text_icon_warning">#FFAE1A</color>
+    <color name="text_icon_info">#94C1FF</color>
+    <color name="text_icon_extra_1">#EBE057</color>
+    <color name="text_icon_extra_2">#D5AEFF</color>
+
+    <color name="stroke_accent">#00B775</color>
+    <color name="stroke_neutral">#3DB1B7FF</color>
+    <color name="stroke_disabled">#14B1B7FF</color>
+
+    <color name="gradient_accent_start">#00B85C</color>
+    <color name="gradient_accent_end">#00B2A4</color>
+    <color name="gradient_negative_start">#FF547E</color>
+    <color name="gradient_negative_end">#FF5A4E</color>
+    <color name="gradient_background_start">#191B3F</color>
+    <color name="gradient_background_end">#093133</color>
+
+    <color name="shadow_accent">#5900B775</color>
+    <color name="shadow_positive">#5900B775</color>
+    <color name="shadow_negative">#59FF547E</color>
+    <color name="shadow_neutral">#5905071F</color>
 </resources>

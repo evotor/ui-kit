@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_content_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:padding="@dimen/bottom_sheet_dialog_padding_v2"
+    tools:background="@drawable/dialog_v2_bottom_background"
+    tools:ignore="UselessParent">
+
+    <View
+        android:id="@+id/drag_handle"
+        android:layout_width="32dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/drag_handle_dialog_v2_margin_top"
+        android:layout_marginBottom="@dimen/drag_handle_dialog_v2_margin_bottom"
+        android:background="@drawable/bg_drag_handle_dialog_v2" />
+
+    <ImageView
+        android:id="@+id/dialog_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ic_alert_circle_red_48" />
+
+    <TextView
+        android:id="@+id/dialog_title"
+        style="@style/EvotorUITheme.Text.Headline.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/bottom_sheet_dialog_title_margin_v2"
+        android:gravity="start"
+        tools:text="Dialog title, soooooooooooo long" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialog_message"
+            style="@style/EvotorUITheme.Text.BodyLarge.Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            tools:text="Dialog message" />
+
+        <TextView
+            android:id="@+id/dialog_details"
+            style="@style/EvotorUITheme.Text.Caption2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/bottom_sheet_dialog_block_vertical_margin"
+            android:gravity="start"
+            android:textColor="@color/text_secondary"
+            tools:text="Dialog details" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dialog_attention_text"
+        style="@style/EvotorUITheme.Text.Body16.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/bottom_sheet_dialog_padding_new_error_style"
+        android:gravity="center"
+        android:textColor="@color/text_secondary"
+        android:visibility="gone"
+        tools:text="Закроется через 10"
+        tools:visibility="visible" />
+</LinearLayout>

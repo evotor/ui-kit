@@ -304,4 +304,127 @@
         <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
     </style>
 
+    <style name="EvotorUITheme.Text.Headline.ExtraExtraLarge" parent="EvotorUITheme.Text">
+        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="android:textSize">@dimen/headline_extra_extra_large_text_size</item>
+        <item name="android:lineHeight">@dimen/headline_extra_extra_large_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/headline_extra_extra_large_line_spacing_extra</item>
+        <!-- 2px при кегле 48 -->
+        <item name="android:letterSpacing">0.041667</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.Headline.ExtraLarge" parent="EvotorUITheme.Text">
+        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="android:textSize">@dimen/headline_extra_large_text_size</item>
+        <item name="android:lineHeight">@dimen/headline_extra_large_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/headline_extra_large_line_spacing_extra</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.Headline.Large" parent="EvotorUITheme.Text">
+        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="android:textSize">@dimen/headline_large_text_size</item>
+        <item name="android:lineHeight">@dimen/headline_large_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/headline_large_line_spacing_extra</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.Headline.Medium" parent="EvotorUITheme.Text">
+        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="android:textSize">@dimen/headline_medium_text_size</item>
+        <item name="android:lineHeight">@dimen/headline_medium_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/headline_medium_line_spacing_extra</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.Headline.Medium.Lv2" parent="EvotorUITheme.Text.Headline.Medium" />
+
+    <style name="EvotorUITheme.Text.Headline.Medium.Lv3" parent="EvotorUITheme.Text.Headline.Medium" />
+
+    <style name="EvotorUITheme.Text.Headline.Small" parent="EvotorUITheme.Text.Headline.Medium">
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.Headline.ExtraSmall" parent="EvotorUITheme.Text">
+        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="android:textSize">@dimen/headline_extra_small_text_size</item>
+        <item name="android:lineHeight">@dimen/headline_extra_small_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/headline_extra_small_line_spacing_extra</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.BodyLarge.Regular" parent="EvotorUITheme.Text">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="android:textSize">@dimen/body_large_text_size</item>
+        <item name="android:lineHeight">@dimen/body_large_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/body_large_line_spacing_extra</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.BodyLarge.Strong" parent="EvotorUITheme.Text.BodyLarge.Regular">
+        <item name="android:fontFamily">@font/manrope_bold</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.BodyLarge.Strong.Lv2" parent="EvotorUITheme.Text.BodyLarge.Strong" />
+
+    <style name="EvotorUITheme.Text.BodyLarge.Strong.Lv3" parent="EvotorUITheme.Text.BodyLarge.Strong" />
+
+    <style name="EvotorUITheme.Text.BodyMedium.Regular" parent="EvotorUITheme.Text">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="android:textSize">@dimen/body_medium_text_size</item>
+        <item name="android:lineHeight">@dimen/body_medium_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/body_medium_line_spacing_extra</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.BodyMedium.Strong" parent="EvotorUITheme.Text.BodyMedium.Regular">
+        <item name="android:fontFamily">@font/manrope_bold</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.BodySmall.Regular" parent="EvotorUITheme.Text">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="android:textSize">@dimen/body_small_text_size</item>
+        <item name="android:lineHeight">@dimen/body_small_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/body_small_line_spacing_extra</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.BodySmall.Strong" parent="EvotorUITheme.Text.BodySmall.Regular">
+        <item name="android:fontFamily">@font/manrope_bold</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.BodyExtraSmall.Regular" parent="EvotorUITheme.Text">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="android:textSize">@dimen/body_extra_small_text_size</item>
+        <item name="android:lineHeight">@dimen/body_extra_small_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/body_extra_small_line_spacing_extra</item>
+    </style>
+
+    <style name="EvotorUITheme.Text.BodyExtraSmall.Strong" parent="EvotorUITheme.Text.BodyExtraSmall.Regular">
+        <item name="android:fontFamily">@font/manrope_bold</item>
+    </style>
+
+    <style name="EvotorUITheme.Button.NewDialog.Primary" parent="EvotorUITheme.Button">
+        <item name="android:background">@drawable/btn_dialog_v2_primary_background</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">@dimen/button_dialog_v2_min_height</item>
+        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/button_dialog_v2_text_size</item>
+        <item name="android:lineHeight">@dimen/button_dialog_v2_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/button_dialog_v2_line_spacing_extra</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="EvotorUITheme.Button.NewDialog.Secondary" parent="EvotorUITheme.Button">
+        <item name="android:background">@drawable/btn_dialog_v2_secondary_background</item>
+<!--        <item name="android:textColor">@color/text_primary</item>-->
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">@dimen/button_dialog_v2_min_height</item>
+<!--        <item name="android:fontFamily">@font/manrope_bold</item>-->
+        <item name="android:textStyle">bold</item>
+<!--        <item name="android:textSize">@dimen/button_new_dialog_text_size</item>-->
+<!--        <item name="android:lineHeight">@dimen/button_new_dialog_line_height</item>-->
+<!--        <item name="android:lineSpacingExtra">@dimen/button_new_dialog_line_spacing_extra</item>-->
+<!--        <item name="android:letterSpacing">0</item>-->
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@style/EvotorUITheme.Text.BodyLarge.Strong</item>
+    </style>
+
 </resources>
