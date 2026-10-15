@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/bottom_sheet_dialog_radio_group_item_spacing"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/bottom_sheet_dialog_radio_group_item_height"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/padding_container_medium"
+    android:paddingTop="@dimen/padding_container_small"
+    android:paddingEnd="@dimen/padding_container_medium"
+    android:paddingBottom="@dimen/padding_container_small">
+
+    <RadioButton
+        android:id="@+id/radio_button"
+        style="@style/EvotorUITheme.RadioButton"
+        android:layout_width="@dimen/element_size_small"
+        android:layout_height="@dimen/element_size_small"
+        android:clickable="false"
+        android:focusable="false"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp" />
+
+    <TextView
+        android:id="@+id/text"
+        style="@style/EvotorUITheme.Text.BodyLarge.Regular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_container_small_decreased"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/text_primary"
+        tools:text="22 %" />
+
+    <TextView
+        android:id="@+id/text_end"
+        style="@style/EvotorUITheme.Text.BodyMedium.Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_container_small"
+        android:textColor="@color/text_icon_secondary"
+        android:visibility="gone"
+        tools:text="К" />
+
+    <ImageView
+        android:id="@+id/lock_icon"
+        android:layout_width="@dimen/element_size_extra_small"
+        android:layout_height="@dimen/element_size_extra_small"
+        android:layout_marginStart="@dimen/padding_container_small"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_lock_24"
+        android:visibility="gone"
+        tools:visibility="visible" />
+</LinearLayout>
