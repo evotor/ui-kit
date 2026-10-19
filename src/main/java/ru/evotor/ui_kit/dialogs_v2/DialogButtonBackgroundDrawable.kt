@@ -14,7 +14,7 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import ru.evotor.ui_kit.R
 
-internal class DialogV2ButtonBackgroundDrawable(context: Context) : Drawable() {
+internal class DialogButtonBackgroundDrawable(context: Context) : Drawable() {
 
     private val cornerRadius =
         context.resources.getDimension(R.dimen.button_dialog_v2_corner_radius)

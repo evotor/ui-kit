@@ -11,7 +11,6 @@ import androidx.annotation.StringRes
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.core.view.setPadding
 import androidx.fragment.app.FragmentManager
 import gone
 import ru.evotor.ui_kit.R
@@ -111,7 +110,7 @@ class AlertBottomSheetDialogFragmentV2 :
                 0
             }
             if (isPrimary) {
-                button.background = DialogV2ButtonBackgroundDrawable(requireContext())
+                button.background = DialogButtonBackgroundDrawable(requireContext())
             }
             val layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,

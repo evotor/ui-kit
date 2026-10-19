@@ -338,8 +338,11 @@
 
     <style name="EvotorUITheme.Text.Headline.Medium.Lv3" parent="EvotorUITheme.Text.Headline.Medium" />
 
-    <style name="EvotorUITheme.Text.Headline.Small" parent="EvotorUITheme.Text.Headline.Medium">
-        <item name="android:textAllCaps">true</item>
+    <style name="EvotorUITheme.Text.Headline.Small" parent="EvotorUITheme.Text">
+        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="android:textSize">@dimen/headline_small_text_size</item>
+        <item name="android:lineHeight">@dimen/headline_small_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/headline_small_line_spacing_extra</item>
     </style>
 
     <style name="EvotorUITheme.Text.Headline.ExtraSmall" parent="EvotorUITheme.Text">
