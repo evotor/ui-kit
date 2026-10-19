@@ -258,8 +258,8 @@
     <!-- Стиль для RadioButton -->
     <style name="EvotorUITheme.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
         <item name="android:textAppearance">@style/EvotorUITheme.Text.Body1</item>
-        <item name="colorControlNormal">@android:color/white</item>
-        <item name="colorControlActivated">@color/bg_accent</item>
+        <item name="buttonTint">@color/radio_button_color</item>
+        <item name="useMaterialThemeColors">false</item>
         <item name="android:paddingStart">@dimen/button_text_drawable_padding</item>
     </style>
 
