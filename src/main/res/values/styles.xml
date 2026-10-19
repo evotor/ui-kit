@@ -343,6 +343,7 @@
         <item name="android:textSize">@dimen/headline_small_text_size</item>
         <item name="android:lineHeight">@dimen/headline_small_line_height</item>
         <item name="android:lineSpacingExtra">@dimen/headline_small_line_spacing_extra</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="EvotorUITheme.Text.Headline.ExtraSmall" parent="EvotorUITheme.Text">
