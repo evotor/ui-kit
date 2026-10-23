@@ -406,16 +406,66 @@
         <item name="android:background">@drawable/btn_dialog_v2_primary_background</item>
         <item name="android:minHeight">@dimen/button_dialog_v2_min_height</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">@style/EvotorUITheme.Text.BodyLarge.Strong</item>
+        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="android:textSize">@dimen/body_large_text_size</item>
+        <item name="android:lineHeight">@dimen/body_large_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/body_large_line_spacing_extra</item>
     </style>
 
     <style name="EvotorUITheme.Button.NewDialog.Secondary" parent="EvotorUITheme.Button">
         <item name="android:background">@drawable/btn_dialog_v2_secondary_background</item>
         <item name="android:minHeight">@dimen/button_dialog_v2_min_height</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">@style/EvotorUITheme.Text.BodyLarge.Strong</item>
+        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="android:textSize">@dimen/body_large_text_size</item>
+        <item name="android:lineHeight">@dimen/body_large_line_height</item>
+        <item name="android:lineSpacingExtra">@dimen/body_large_line_spacing_extra</item>
+    </style>
+
+    <style name="EvotorUITheme.TextInputLayout.DialogV2" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundMode">filled</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.EvotorUITheme.TextInputLayout.DialogV2</item>
+        <item name="boxBackgroundColor">@color/bg_neutral_secondary</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.EvotorUITheme.TextInputLayout.DialogV2</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="hintEnabled">true</item>
+        <item name="hintTextAppearance">@style/EvotorUITheme.TextInputLayout.DialogV2.Hint</item>
+        <item name="hintTextColor">@color/text_icon_secondary</item>
+        <item name="endIconMode">clear_text</item>
+        <item name="endIconDrawable">@drawable/ic_close_24</item>
+        <item name="endIconTint">@color/text_icon_secondary</item>
+        <item name="android:textColorHint">@color/text_icon_secondary</item>
+    </style>
+
+    <style name="ThemeOverlay.EvotorUITheme.TextInputLayout.DialogV2" parent="ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="colorSurface">@color/bg_popup</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.EvotorUITheme.TextInputLayout.DialogV2" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/dialog_v2_input_corner_radius</item>
+    </style>
+
+    <style name="EvotorUITheme.TextInputLayout.DialogV2.Hint" parent="EvotorUITheme.Text.Caption2">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="android:textColor">@color/text_icon_secondary</item>
+    </style>
+
+    <style name="EvotorUITheme.TextInputEditText.DialogV2" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="android:textSize">@dimen/body_dialog_v2_text_size</item>
+        <item name="android:lineHeight">@dimen/body_dialog_v2_line_height</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_icon_secondary</item>
+        <item name="android:textCursorDrawable">@drawable/edit_text_cursor_drawable</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
     </style>
 
 </resources>
