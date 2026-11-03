@@ -52,6 +52,8 @@
     <color name="bg_positive">#00B775</color>
     <color name="bg_negative">#FF547E</color>
     <color name="bg_warning">#3DFFB76E</color>
+    <color name="bg_warning_alpha">#3DE97400</color>
+    <color name="bg_negative_alpha">#3DFF567F</color>
     <color name="bg_info">#335663FF</color>
     <color name="bg_divider">#0FD8D8FD</color>
     <color name="bg_extra_1">#1FFFEE05</color>

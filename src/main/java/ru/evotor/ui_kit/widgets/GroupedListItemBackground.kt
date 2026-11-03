@@ -36,6 +36,25 @@ object GroupedListItemBackground {
         }
     }
 
+    @JvmOverloads
+    fun applyItemBackground(
+        view: View,
+        topLarge: Boolean,
+        bottomLarge: Boolean,
+        @ColorRes colorRes: Int = R.color.bg_neutral_secondary,
+        @DimenRes largeRadiusRes: Int = R.dimen.corner_medium,
+        @DimenRes smallRadiusRes: Int = R.dimen.corner_extra_small
+    ) {
+        view.background = itemBackground(
+            context = view.context,
+            topLarge = topLarge,
+            bottomLarge = bottomLarge,
+            colorRes = colorRes,
+            largeRadiusRes = largeRadiusRes,
+            smallRadiusRes = smallRadiusRes
+        )
+    }
+
     fun itemBackground(
         context: Context,
         topLarge: Boolean,
