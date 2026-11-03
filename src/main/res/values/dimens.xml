@@ -50,6 +50,8 @@
     <dimen name="bottom_sheet_dialog_title_margin_v2">16dp</dimen>
     <dimen name="bottom_sheet_dialog_message_margin_v2">16dp</dimen>
     <dimen name="bottom_sheet_dialog_message_to_button_margin_v2">32dp</dimen>
+    <dimen name="bottom_sheet_dialog_radio_group_item_spacing">2dp</dimen>
+    <dimen name="bottom_sheet_dialog_radio_group_item_height">64dp</dimen>
     <dimen name="button_dialog_v2_margin">8dp</dimen>
     <dimen name="button_dialog_v2_min_height">56dp</dimen>
     <dimen name="button_dialog_v2_corner_radius">16dp</dimen>
