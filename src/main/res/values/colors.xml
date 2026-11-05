@@ -46,18 +46,27 @@
     <color name="bg_neutral_secondary">#0FB1B7FF</color>
     <color name="bg_neutral_null">#00B1B7FF</color>
     <color name="bg_accent">#00B775</color>
+    <color name="bg_accent_alpha">#3D00B775</color>
     <color name="bg_selected">#3D7733FF</color>
     <color name="bg_popup">#223649</color>
     <color name="bg_scrim">#E605071F</color>
     <color name="bg_positive">#00B775</color>
+    <color name="bg_positive_alpha">#3D00B775</color>
     <color name="bg_negative">#FF547E</color>
+    <color name="bg_negative_alpha">#3DFF547E</color>
     <color name="bg_warning">#3DFFB76E</color>
     <color name="bg_warning_alpha">#3DE97400</color>
-    <color name="bg_negative_alpha">#3DFF567F</color>
-    <color name="bg_info">#335663FF</color>
+    <color name="bg_info">#2C96FF</color>
+    <color name="bg_info_alpha">#3D2C96FF</color>
     <color name="bg_divider">#0FD8D8FD</color>
-    <color name="bg_extra_1">#1FFFEE05</color>
-    <color name="bg_extra_2">#3D6E6EFF</color>
+    <color name="bg_extra_1">#A77BFF</color>
+    <color name="bg_extra_1_alpha">#3DA77BFF</color>
+    <color name="bg_extra_2">#00A2B1</color>
+    <color name="bg_extra_2_alpha">#3D00A2B1</color>
+    <color name="bg_extra_3">#C98600</color>
+    <color name="bg_extra_3_alpha">#3DC98600</color>
+    <color name="bg_extra_4">#FF5D0C</color>
+    <color name="bg_extra_4_alpha">#3DFF5D0C</color>
 
     <color name="text_icon_primary">#FFFFFF</color>
     <color name="text_icon_secondary">#99EBEEFF</color>
@@ -68,8 +77,10 @@
     <color name="text_icon_negative">#FF6A8F</color>
     <color name="text_icon_warning">#FFAE1A</color>
     <color name="text_icon_info">#94C1FF</color>
-    <color name="text_icon_extra_1">#EBE057</color>
-    <color name="text_icon_extra_2">#D5AEFF</color>
+    <color name="text_icon_extra_1">#D3BDFF</color>
+    <color name="text_icon_extra_2">#3EDBEA</color>
+    <color name="text_icon_extra_3">#EBC700</color>
+    <color name="text_icon_extra_4">#FFB88F</color>
 
     <color name="stroke_accent">#00B775</color>
     <color name="stroke_neutral">#3DB1B7FF</color>
