@@ -71,11 +71,11 @@
     <color name="text_icon_primary">#FFFFFF</color>
     <color name="text_icon_secondary">#99EBEEFF</color>
     <color name="text_icon_disabled">#40EBEEFF</color>
-    <color name="text_icon_accent">#00E595</color>
+    <color name="text_icon_accent">#40E1A9</color>
     <color name="text_icon_invert">#E605071F</color>
-    <color name="text_icon_positive">#00E595</color>
-    <color name="text_icon_negative">#FF6A8F</color>
-    <color name="text_icon_warning">#FFAE1A</color>
+    <color name="text_icon_positive">#40E1A9</color>
+    <color name="text_icon_negative">#FFB3B9</color>
+    <color name="text_icon_warning">#FFBC42</color>
     <color name="text_icon_info">#94C1FF</color>
     <color name="text_icon_extra_1">#D3BDFF</color>
     <color name="text_icon_extra_2">#3EDBEA</color>
