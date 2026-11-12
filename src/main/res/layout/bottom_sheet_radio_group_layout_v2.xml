@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:ignore="UselessParent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/dialog_close_button"
+            android:layout_width="@dimen/bottom_sheet_dialog_close_button_size"
+            android:layout_height="@dimen/bottom_sheet_dialog_close_button_size"
+            android:layout_gravity="top|end"
+            android:layout_marginBottom="@dimen/bottom_sheet_dialog_close_button_margin_top"
+            android:layout_marginEnd="@dimen/bottom_sheet_dialog_close_button_margin"
+            android:background="@drawable/bg_dialog_close_button"
+            android:scaleType="center"
+            android:src="@drawable/ic_close"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/dialog_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/bottom_sheet_dialog_padding_v2"
+        android:paddingStart="@dimen/bottom_sheet_dialog_padding_v2"
+        android:paddingEnd="@dimen/bottom_sheet_dialog_padding_v2"
+        tools:background="@drawable/dialog_v2_bottom_background"
+        tools:ignore="UselessParent">
+
+        <View
+            android:id="@+id/drag_handle"
+            android:layout_width="32dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/drag_handle_dialog_v2_margin_top"
+            android:layout_marginBottom="@dimen/drag_handle_dialog_v2_margin_bottom"
+            android:background="@drawable/bg_drag_handle_dialog_v2" />
+
+        <TextView
+            android:id="@+id/dialog_title"
+            style="@style/EvotorUITheme.Text.Headline.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bottom_sheet_dialog_title_margin_v2"
+            android:gravity="start"
+            tools:text="Выберите ставку НДС" />
+
+        <TextView
+            android:id="@+id/dialog_message"
+            style="@style/EvotorUITheme.Text.BodySmall.Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bottom_sheet_dialog_v2_block_vertical_margin"
+            android:gravity="start"
+            android:textColor="@color/text_icon_secondary"
+            tools:text="Ставки с замком доступны после подключения дополнения" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/radio_group_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/bottom_sheet_dialog_padding_v2"/>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

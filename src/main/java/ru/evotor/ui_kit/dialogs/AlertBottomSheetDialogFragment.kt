@@ -21,6 +21,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.withClip
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
 import androidx.fragment.app.FragmentManager
@@ -29,7 +30,6 @@ import gone
 import ru.evotor.ui_kit.R
 import ru.evotor.ui_kit.databinding.BottomSheetAlertLayoutBinding
 import visible
-import androidx.core.graphics.withClip
 
 
 class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheetAlertLayoutBinding>() {
