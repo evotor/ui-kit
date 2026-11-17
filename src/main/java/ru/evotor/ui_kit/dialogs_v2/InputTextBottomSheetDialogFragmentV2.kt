@@ -9,10 +9,8 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.LinearLayout
-import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.appcompat.view.ContextThemeWrapper
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.textfield.TextInputEditText
@@ -44,11 +42,6 @@ class InputTextBottomSheetDialogFragmentV2 :
         super.onViewCreated(view, savedInstanceState)
         binding.root.background = null
         binding.dialogContentContainer.setBackgroundResource(R.drawable.dialog_v2_bottom_background)
-        val icon = arguments?.getIcon()
-        icon?.let {
-            binding.dialogImage.setImageDrawable(ContextCompat.getDrawable(view.context, it))
-            binding.dialogImage.visible()
-        } ?: binding.dialogImage.gone()
         arguments?.getTitle()?.let {
             val args = arguments?.getTitleArgs()
             binding.dialogTitle.text = if (args != null) {
@@ -105,24 +98,6 @@ class InputTextBottomSheetDialogFragmentV2 :
             binding.inputFirst.filters = filters.toTypedArray()
             binding.inputSecond.filters = filters.toTypedArray()
         }
-        arguments?.getDetails()?.let {
-            val args = arguments?.getDetailsArgs()
-            binding.dialogDetails.text = if (args != null) {
-                String.format(it, *args)
-            } else {
-                it
-            }
-            binding.dialogDetails.visible()
-        } ?: binding.dialogDetails.gone()
-        arguments?.getAttention()?.let {
-            val args = arguments?.getAttentionArgs()
-            binding.dialogAttentionText.text = if (args != null) {
-                String.format(it, *args)
-            } else {
-                it
-            }
-            binding.dialogAttentionText.visible()
-        } ?: binding.dialogAttentionText.gone()
         bottomButtons.forEachIndexed { index, buttonDescription ->
             val isPrimary =
                 (buttonDescription is ButtonDescription.Positive ||
@@ -138,7 +113,7 @@ class InputTextBottomSheetDialogFragmentV2 :
             )
             button.text = buttonDescription.text
             val glowInset = if (isPrimary) {
-                resources.getDimensionPixelSize(R.dimen.button_dialog_v2_shadow_radius)
+                resources.getDimensionPixelSize(R.dimen.dialog_v2_button_shadow_radius)
             } else {
                 0
             }
@@ -151,11 +126,11 @@ class InputTextBottomSheetDialogFragmentV2 :
             )
             val topMargin = if (index == 0) {
                 resources.getDimensionPixelSize(
-                    R.dimen.bottom_sheet_dialog_message_to_button_margin_v2
+                    R.dimen.dialog_v2_message_to_button_margin
                 )
             } else {
                 resources.getDimensionPixelSize(
-                    R.dimen.button_dialog_v2_margin
+                    R.dimen.dialog_v2_button_margin
                 )
             }
             layoutParams.setMargins(
@@ -166,7 +141,7 @@ class InputTextBottomSheetDialogFragmentV2 :
             )
             if (isPrimary) {
                 val pillHeight = resources.getDimensionPixelSize(
-                    R.dimen.button_dialog_v2_min_height
+                    R.dimen.dialog_v2_button_min_height
                 )
                 layoutParams.height = pillHeight + 2 * glowInset
             }
@@ -258,52 +233,6 @@ class InputTextBottomSheetDialogFragmentV2 :
         return this
     }
 
-    fun setDetails(details: String): InputTextBottomSheetDialogFragmentV2 {
-        arguments?.putString(DETAILS_KEY, details)
-        return this
-    }
-
-    fun setDetails(
-        @StringRes detailsRes: Int,
-        vararg detailsArgs: Any
-    ): InputTextBottomSheetDialogFragmentV2 {
-        arguments?.putInt(DETAILS_RES_KEY, detailsRes)
-        arguments?.putStringArray(
-            DETAILS_ARGS_KEY,
-            detailsArgs.map { it.toString() }.toTypedArray()
-        )
-        return this
-    }
-
-    fun setAttentionText(attentionText: String): InputTextBottomSheetDialogFragmentV2 {
-        arguments?.putString(ATTENTION_KEY, attentionText)
-        return this
-    }
-
-    fun setAttentionText(
-        @StringRes attentionTextRes: Int,
-        vararg attentionTextArgs: Any
-    ): InputTextBottomSheetDialogFragmentV2 {
-        arguments?.putInt(ATTENTION_RES_KEY, attentionTextRes)
-        arguments?.putStringArray(
-            ATTENTION_ARGS_KEY,
-            attentionTextArgs.map { it.toString() }.toTypedArray()
-        )
-        return this
-    }
-
-    fun updateAttentionText(text: String?) {
-        binding.dialogAttentionText.text = text
-        binding.dialogAttentionText.isVisible = !text.isNullOrBlank()
-    }
-
-    fun updateAttentionText(
-        @StringRes attentionTextRes: Int,
-        vararg attentionTextArgs: Any
-    ) {
-        updateAttentionText(requireContext().getString(attentionTextRes, *attentionTextArgs))
-    }
-
     fun setOnSaveListener(listener: (first: String, second: String) -> Unit): InputTextBottomSheetDialogFragmentV2 {
         onSaveListener = listener
         return this
@@ -321,11 +250,6 @@ class InputTextBottomSheetDialogFragmentV2 :
         return this
     }
 
-    fun setIconDrawable(@DrawableRes iconDrawable: Int): InputTextBottomSheetDialogFragmentV2 {
-        arguments?.putInt(ICON_KEY, iconDrawable)
-        return this
-    }
-
     fun setIsCancelable(isCancelable: Boolean): InputTextBottomSheetDialogFragmentV2 {
         setCancelable(isCancelable)
         return this
@@ -340,10 +264,6 @@ class InputTextBottomSheetDialogFragmentV2 :
         }
         saveStacktrace()
         return this
-    }
-
-    private fun Bundle.getIcon(): Int? = getInt(ICON_KEY).let {
-        if (it == 0) null else it
     }
 
     companion object {
@@ -369,7 +289,6 @@ class InputTextBottomSheetDialogFragmentV2 :
 
         private const val TAG = "ru.evotor.ui_kit.dialogs_v2.InputTextBottomSheetDialogFragment.tag"
 
-        private const val ICON_KEY = "ru.evotor.ui_kit.dialogs_v2.InputTextBottomSheetDialogFragment.icon_key"
         private const val FIRST_VALUE_KEY = "ru.evotor.ui_kit.dialogs_v2.InputTextBottomSheetDialogFragment.first_value_key"
         private const val FIRST_HINT_RES_KEY = "ru.evotor.ui_kit.dialogs_v2.InputTextBottomSheetDialogFragment.first_hint_res_key"
         private const val SECOND_VALUE_KEY = "ru.evotor.ui_kit.dialogs_v2.InputTextBottomSheetDialogFragment.second_value_key"

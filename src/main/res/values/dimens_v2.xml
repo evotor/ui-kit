@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dialog_v2_padding">16dp</dimen>
+    <dimen name="dialog_v2_corner_radius">32dp</dimen>
+    <dimen name="dialog_v2_title_margin">16dp</dimen>
+    <dimen name="dialog_v2_message_margin">16dp</dimen>
+    <dimen name="dialog_v2_message_to_button_margin">32dp</dimen>
+    <dimen name="dialog_v2_radio_group_item_spacing">2dp</dimen>
+    <dimen name="dialog_v2_radio_group_item_height">64dp</dimen>
+    <dimen name="dialog_v2_button_margin">8dp</dimen>
+    <dimen name="dialog_v2_button_min_height">56dp</dimen>
+    <dimen name="dialog_v2_button_corner_radius">16dp</dimen>
+    <dimen name="dialog_v2_button_shadow_radius">24dp</dimen>
+    <dimen name="dialog_v2_input_height">56dp</dimen>
+    <dimen name="dialog_v2_input_corner_radius">16dp</dimen>
+    <dimen name="dialog_v2_heading_text_size">20sp</dimen>
+    <dimen name="dialog_v2_heading_line_height">28sp</dimen>
+    <dimen name="dialog_v2_heading_line_spacing_extra">8sp</dimen>
+    <dimen name="dialog_v2_body_text_size">16sp</dimen>
+    <dimen name="dialog_v2_body_line_height">24sp</dimen>
+    <dimen name="dialog_v2_body_line_spacing_extra">8sp</dimen>
+    <dimen name="dialog_v2_button_text_size">16sp</dimen>
+    <dimen name="dialog_v2_button_line_height">24sp</dimen>
+    <dimen name="dialog_v2_button_line_spacing_extra">8sp</dimen>
+    <dimen name="dialog_v2_close_button_size">40dp</dimen>
+    <dimen name="dialog_v2_close_button_icon_size">24dp</dimen>
+    <dimen name="dialog_v2_drag_handle_corner_radius">2dp</dimen>
+    <dimen name="dialog_v2_drag_handle_margin_top">-8dp</dimen>
+    <dimen name="dialog_v2_drag_handle_margin_bottom">6dp</dimen>
+    <dimen name="dialog_close_button_margin">12dp</dimen>
+    <dimen name="dialog_v2_close_button_margin_top">6dp</dimen>
+    <dimen name="dialog_v2_block_vertical_margin">16dp</dimen>
+
+    <dimen name="corner_extra_small">4dp</dimen>
+    <dimen name="corner_small">8dp</dimen>
+    <dimen name="corner_medium">16dp</dimen>
+    <dimen name="corner_large">20dp</dimen>
+    <dimen name="corner_extra_large">32dp</dimen>
+    <dimen name="corner_full">1000dp</dimen>
+    <dimen name="corner_inside_medium">12dp</dimen>
+    <dimen name="corner_inside_large">16dp</dimen>
+
+    <dimen name="padding_container_extra_small">4dp</dimen>
+    <dimen name="padding_container_small_decreased">8dp</dimen>
+    <dimen name="padding_container_small">12dp</dimen>
+    <dimen name="padding_container_medium">16dp</dimen>
+    <dimen name="padding_container_large">24dp</dimen>
+
+    <dimen name="section_horizontal_small">8dp</dimen>
+    <dimen name="section_horizontal_medium">16dp</dimen>
+    <dimen name="section_horizontal_large">32dp</dimen>
+    <dimen name="section_horizontal_extra_large">48dp</dimen>
+
+    <dimen name="element_size_extra_small">24dp</dimen>
+    <dimen name="element_size_small">32dp</dimen>
+    <dimen name="element_size_medium_decreased">40dp</dimen>
+    <dimen name="element_size_medium">56dp</dimen>
+    <dimen name="element_size_large">80dp</dimen>
+
+    <dimen name="headline_extra_extra_large_text_size">48sp</dimen>
+    <dimen name="headline_extra_extra_large_line_height">60sp</dimen>
+    <dimen name="headline_extra_extra_large_line_spacing_extra">12sp</dimen>
+    <dimen name="headline_extra_large_text_size">38sp</dimen>
+    <dimen name="headline_extra_large_line_height">48sp</dimen>
+    <dimen name="headline_extra_large_line_spacing_extra">10sp</dimen>
+    <dimen name="headline_large_text_size">28sp</dimen>
+    <dimen name="headline_large_line_height">36sp</dimen>
+    <dimen name="headline_large_line_spacing_extra">8sp</dimen>
+    <dimen name="headline_medium_text_size">20sp</dimen>
+    <dimen name="headline_medium_line_height">28sp</dimen>
+    <dimen name="headline_medium_line_spacing_extra">8sp</dimen>
+    <dimen name="headline_small_text_size">14sp</dimen>
+    <dimen name="headline_small_line_height">20sp</dimen>
+    <dimen name="headline_small_line_spacing_extra">6sp</dimen>
+    <dimen name="headline_extra_small_text_size">10sp</dimen>
+    <dimen name="headline_extra_small_line_height">12sp</dimen>
+    <dimen name="headline_extra_small_line_spacing_extra">2sp</dimen>
+
+    <dimen name="body_large_text_size">16sp</dimen>
+    <dimen name="body_large_line_height">24sp</dimen>
+    <dimen name="body_large_line_spacing_extra">8sp</dimen>
+    <dimen name="body_medium_text_size">14sp</dimen>
+    <dimen name="body_medium_line_height">20sp</dimen>
+    <dimen name="body_medium_line_spacing_extra">6sp</dimen>
+    <dimen name="body_small_text_size">12sp</dimen>
+    <dimen name="body_small_line_height">16sp</dimen>
+    <dimen name="body_small_line_spacing_extra">4sp</dimen>
+    <dimen name="body_extra_small_text_size">10sp</dimen>
+    <dimen name="body_extra_small_line_height">12sp</dimen>
+    <dimen name="body_extra_small_line_spacing_extra">2sp</dimen>
+
+    <dimen name="paragraph_indent_lv2">32dp</dimen>
+    <dimen name="paragraph_indent_lv3">60dp</dimen>
+
+    <dimen name="shadow_offset_x">0dp</dimen>
+    <dimen name="shadow_offset_y">0dp</dimen>
+    <dimen name="shadow_spread">0dp</dimen>
+    <dimen name="shadow_blur_medium">24dp</dimen>
+    <dimen name="shadow_blur_small">16dp</dimen>
+</resources>

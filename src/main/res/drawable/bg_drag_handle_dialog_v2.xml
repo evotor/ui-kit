@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <corners android:radius="@dimen/drag_handle_dialog_v2_corner_radius" />
+    <corners android:radius="@dimen/dialog_v2_drag_handle_corner_radius" />
 
-    <solid android:color="@color/drag_handle_new_dialog_color" />
+    <solid android:color="@color/text_icon_disabled" />
 </shape>

@@ -117,7 +117,7 @@ class AlertBottomSheetDialogFragmentV2 :
             )
             button.text = buttonDescription.text
             val glowInset = if (isPrimary) {
-                resources.getDimensionPixelSize(R.dimen.button_dialog_v2_shadow_radius)
+                resources.getDimensionPixelSize(R.dimen.dialog_v2_button_shadow_radius)
             } else {
                 0
             }
@@ -130,11 +130,11 @@ class AlertBottomSheetDialogFragmentV2 :
             )
             val topMargin = if (index == 0) {
                 resources.getDimensionPixelSize(
-                    R.dimen.bottom_sheet_dialog_message_to_button_margin_v2
+                    R.dimen.dialog_v2_message_to_button_margin
                 )
             } else {
                 resources.getDimensionPixelSize(
-                    R.dimen.button_dialog_v2_margin
+                    R.dimen.dialog_v2_button_margin
                 )
             }
             layoutParams.setMargins(
@@ -145,7 +145,7 @@ class AlertBottomSheetDialogFragmentV2 :
             )
             if (isPrimary) {
                 val pillHeight = resources.getDimensionPixelSize(
-                    R.dimen.button_dialog_v2_min_height
+                    R.dimen.dialog_v2_button_min_height
                 )
                 layoutParams.height = pillHeight + 2 * glowInset
             }

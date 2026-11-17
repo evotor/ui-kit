@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/bottom_sheet_dialog_radio_group_item_spacing"
+    android:layout_marginBottom="@dimen/dialog_v2_radio_group_item_spacing"
     android:gravity="center_vertical"
-    android:minHeight="@dimen/bottom_sheet_dialog_radio_group_item_height"
+    android:minHeight="@dimen/dialog_v2_radio_group_item_height"
     android:orientation="horizontal"
     android:paddingStart="@dimen/padding_container_medium"
     android:paddingTop="@dimen/padding_container_small"
@@ -14,7 +14,7 @@
 
     <RadioButton
         android:id="@+id/radio_button"
-        style="@style/EvotorUITheme.RadioButton"
+        style="@style/EvotorUITheme.RadioButton_v2"
         android:layout_width="@dimen/element_size_small"
         android:layout_height="@dimen/element_size_small"
         android:clickable="false"

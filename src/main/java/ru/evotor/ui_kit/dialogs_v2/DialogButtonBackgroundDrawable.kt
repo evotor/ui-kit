@@ -17,14 +17,14 @@ import ru.evotor.ui_kit.R
 internal class DialogButtonBackgroundDrawable(context: Context) : Drawable() {
 
     private val cornerRadius =
-        context.resources.getDimension(R.dimen.button_dialog_v2_corner_radius)
+        context.resources.getDimension(R.dimen.dialog_v2_button_corner_radius)
 
     private val shadowRadius =
-        context.resources.getDimension(R.dimen.button_dialog_v2_shadow_radius)
+        context.resources.getDimension(R.dimen.dialog_v2_button_shadow_radius)
 
     private val gradientStart = ContextCompat.getColor(context, R.color.gradient_accent_start)
     private val gradientEnd = ContextCompat.getColor(context, R.color.gradient_accent_end)
-    private val shadowColor = ContextCompat.getColor(context, R.color.button_new_dialog_shadow)
+    private val shadowColor = ContextCompat.getColor(context, R.color.shadow_accent)
 
     private val fillPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
