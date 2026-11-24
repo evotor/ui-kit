@@ -60,7 +60,6 @@ class AlertBottomSheetDialogFragment : BaseBottomSheetDialogFragment<BottomSheet
                 if (useNewErrorStyle) {
                     root.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
                     root.background = NewErrorStyleBackgroundDrawable(requireContext())
-                    dragHandle.isVisible = true
                 } else {
                     root.setBackgroundResource(R.drawable.dialog_bottom_background_error)
                 }

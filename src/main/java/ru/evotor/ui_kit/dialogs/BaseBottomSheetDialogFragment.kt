@@ -1,13 +1,14 @@
 package ru.evotor.ui_kit.dialogs
 
 import android.app.Dialog
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toDrawable
+import androidx.core.view.doOnLayout
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ru.evotor.ui_kit.R
 import ru.evotor.ui_kit.dialogs.base.DialogShowListener
@@ -29,7 +30,23 @@ abstract class BaseBottomSheetDialogFragment<T : ViewBinding> : BottomSheetDialo
             detailsArgs = arguments?.getDetailsArgs() ?: emptyArray()
         )
         return super.onCreateDialog(savedInstanceState).apply {
-            window?.setBackgroundDrawable(ColorDrawable(context.getColor(R.color.dialog_transparent_background)))
+            window?.setBackgroundDrawable(
+                context.getColor(R.color.dialog_transparent_background).toDrawable()
+            )
+
+            setOnShowListener {
+                val bottomSheet = view?.parent as? View ?: return@setOnShowListener
+                val behavior = BottomSheetBehavior.from(bottomSheet)
+                bottomSheet.doOnLayout { view ->
+                    val parentContainer = view.parent as? View
+                    val realDisplayHeight = parentContainer?.height ?: view.height
+
+                    behavior.isFitToContents = true
+                    behavior.skipCollapsed = true
+                    behavior.peekHeight = realDisplayHeight
+                    behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                }
+            }
         }
     }
 
@@ -52,9 +69,6 @@ abstract class BaseBottomSheetDialogFragment<T : ViewBinding> : BottomSheetDialo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (dialog as BottomSheetDialog?)?.behavior?.peekHeight =
-            activity?.resources?.displayMetrics?.heightPixels
-                ?: 0
         binding.root.setBackgroundResource(R.drawable.dialog_bottom_background_normal)
     }
 
